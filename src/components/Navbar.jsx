@@ -7,7 +7,6 @@ export default function Navbar() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
   const dropdownRef = useRef(null)
-  const accessoriesLabel = language === 'KO' ? '악세사리' : 'Accessories'
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -74,7 +73,7 @@ export default function Navbar() {
             } 
             to="/accessories"
           >
-            {accessoriesLabel}
+            {t('accessories')}
           </NavLink>
         </div>
 
@@ -97,9 +96,7 @@ export default function Navbar() {
               <div className="absolute right-0 mt-2 w-32 bg-surface-container-high border border-white/10 rounded-lg shadow-2xl py-1 z-50 animate-fadeIn">
                 {[
                   { code: 'EN', label: 'English' },
-                  { code: 'KO', label: '한국어' },
-                  { code: 'JA', label: '日本語' },
-                  { code: 'ZH', label: '简体中文' }
+                  { code: 'KO', label: '한국어' }
                 ].map((lang) => (
                   <button
                     key={lang.code}
@@ -199,7 +196,7 @@ export default function Navbar() {
             } 
             to="/accessories"
           >
-            {accessoriesLabel}
+            {t('accessories')}
           </NavLink>
           <Link 
             onClick={() => setMobileMenuOpen(false)}

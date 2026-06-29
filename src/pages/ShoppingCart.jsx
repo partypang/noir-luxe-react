@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 function loadCartItems() {
   try {
@@ -10,6 +11,7 @@ function loadCartItems() {
 }
 
 export default function ShoppingCart() {
+  const { t } = useLanguage()
   const [cartItems, setCartItems] = useState(loadCartItems)
 
   const persistCart = (nextItems) => {
@@ -44,7 +46,7 @@ export default function ShoppingCart() {
     <div className="bg-pitch-black min-h-screen flex flex-col text-on-surface">
       {/* Main Content Canvas */}
       <main className="flex-grow w-full max-w-[1440px] mx-auto px-container-margin py-xl pt-[120px]">
-        <h1 className="font-display-xl text-display-xl mb-xl tracking-tighter">YOUR CART</h1>
+        <h1 className="font-display-xl text-display-xl mb-xl tracking-tighter">{t('yourCart')}</h1>
         {cartItems.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl relative">
             {/* Left Column: Items */}
@@ -86,7 +88,7 @@ export default function ShoppingCart() {
                         onClick={() => handleRemove(item.id)}
                         className="font-label-caps text-label-caps text-silver-mist hover:text-error transition-colors border-b border-transparent hover:border-error pb-[2px]"
                       >
-                        REMOVE
+                        {t('remove')}
                       </button>
                     </div>
                   </div>
@@ -97,23 +99,23 @@ export default function ShoppingCart() {
             {/* Right Column: Summary Sidebar */}
             <div className="lg:col-span-4">
               <div className="bg-deep-slate rounded-lg p-xl sticky top-[120px] border border-pure-white/5">
-                <h3 className="font-headline-lg text-headline-lg mb-lg border-b border-pure-white/10 pb-sm">ORDER SUMMARY</h3>
+                <h3 className="font-headline-lg text-headline-lg mb-lg border-b border-pure-white/10 pb-sm">{t('orderSummary')}</h3>
                 <div className="flex flex-col gap-sm mb-lg border-b border-pure-white/10 pb-md">
                   <div className="flex justify-between font-body-md text-silver-mist">
-                    <span>Subtotal</span>
+                    <span>{t('subtotal')}</span>
                     <span className="text-pure-white">${subtotal.toLocaleString()}.00</span>
                   </div>
                   <div className="flex justify-between font-body-md text-silver-mist">
-                    <span>Shipping</span>
-                    <span className="text-pure-white">Complimentary</span>
+                    <span>{t('shipping')}</span>
+                    <span className="text-pure-white">{t('complimentary')}</span>
                   </div>
                   <div className="flex justify-between font-body-md text-silver-mist">
-                    <span>Estimated Tax</span>
-                    <span className="text-pure-white">Calculated at checkout</span>
+                    <span>{t('tax')}</span>
+                    <span className="text-pure-white">{t('calculatedCheckout')}</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-center mb-xl">
-                  <span className="font-headline-md text-headline-md uppercase tracking-wide">Total</span>
+                  <span className="font-headline-md text-headline-md uppercase tracking-wide">{t('total')}</span>
                   <span className="font-display-xl text-[48px] leading-none tracking-tighter">${subtotal.toLocaleString()}</span>
                 </div>
                 <Link 
@@ -121,21 +123,21 @@ export default function ShoppingCart() {
                   state={{ amount: subtotal }}
                   className="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps py-md px-md rounded-lg hover:bg-inverse-primary transition-colors duration-300 active:scale-[0.98] flex items-center justify-center gap-xs"
                 >
-                  PROCEED TO CHECKOUT
+                  {t('checkoutBtn')}
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </Link>
                 <p className="font-body-sm text-body-sm text-silver-mist mt-md text-center opacity-70">
-                  Secure encrypted payment.
+                  {t('securePay')}
                 </p>
               </div>
             </div>
           </div>
         ) : (
           <div className="text-center py-2xl">
-            <h2 className="font-headline-lg text-pure-white mb-md">Your Cart is Empty</h2>
-            <p className="font-body-md text-silver-mist mb-xl">Add some premium items to your collection.</p>
+            <h2 className="font-headline-lg text-pure-white mb-md">{t('cartEmpty')}</h2>
+            <p className="font-body-md text-silver-mist mb-xl">{t('cartEmptyDesc')}</p>
             <Link to="/shoes" className="font-label-caps text-label-caps text-pure-white bg-primary-container px-[32px] py-[16px] rounded-lg hover:bg-inverse-primary transition-all duration-300">
-              Go to Shoes Collection
+              {t('goToShoes')}
             </Link>
           </div>
         )}

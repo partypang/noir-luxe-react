@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const PRODUCT = {
   id: 'hermes-birkin-25-black-swift',
@@ -21,7 +22,11 @@ const PRODUCT = {
 
 export default function HermesBirkin25Detail() {
   const navigate = useNavigate()
+  const { language, t } = useLanguage()
   const [activeImage, setActiveImage] = useState(PRODUCT.gallery[0])
+  const materialLabel = language === 'KO' ? '스위프트 가죽' : PRODUCT.material
+  const hardwareLabel = language === 'KO' ? '팔라듐 하드웨어' : PRODUCT.hardware
+  const colorLabel = language === 'KO' ? '블랙' : PRODUCT.color
 
   const addToCart = () => {
     const existingItems = JSON.parse(localStorage.getItem('cart_items') || '[]')
@@ -53,7 +58,7 @@ export default function HermesBirkin25Detail() {
       <main className="max-w-[1440px] mx-auto px-container-margin pt-[120px] pb-2xl">
         <Link to="/collection" className="inline-flex items-center gap-xs font-label-caps text-label-caps text-silver-mist hover:text-pure-white transition-colors mb-lg">
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-          Back to Bags
+          {t('backToBags')}
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl">
@@ -82,36 +87,36 @@ export default function HermesBirkin25Detail() {
           </section>
 
           <section className="lg:col-span-5 flex flex-col justify-center">
-            <p className="font-label-caps text-label-caps text-primary-container tracking-[0.2em] mb-sm">CURATED ICON</p>
+            <p className="font-label-caps text-label-caps text-primary-container tracking-[0.2em] mb-sm">{t('curatedIcon')}</p>
             <h1 className="font-display-xl text-[56px] md:text-[72px] leading-none text-pure-white tracking-tight mb-md">
-              BIRKIN 25 BLACK SWIFT
+              {t('birkinTitle')}
             </h1>
             <p className="font-body-lg text-body-lg text-silver-mist mb-lg">
-              Black Swift leather with palladium hardware. A compact Birkin 25 silhouette selected for quiet authority, clean proportion, and everyday collectability.
+              {t('birkinDesc')}
             </p>
 
             <div className="grid grid-cols-2 gap-sm mb-lg">
               <div className="border border-pure-white/10 rounded-md p-md">
-                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">Material</p>
-                <p className="font-body-md text-pure-white">{PRODUCT.material}</p>
+                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">{t('material')}</p>
+                <p className="font-body-md text-pure-white">{materialLabel}</p>
               </div>
               <div className="border border-pure-white/10 rounded-md p-md">
-                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">Hardware</p>
-                <p className="font-body-md text-pure-white">{PRODUCT.hardware}</p>
+                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">{t('hardware')}</p>
+                <p className="font-body-md text-pure-white">{hardwareLabel}</p>
               </div>
               <div className="border border-pure-white/10 rounded-md p-md">
-                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">Color</p>
-                <p className="font-body-md text-pure-white">{PRODUCT.color}</p>
+                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">{t('color')}</p>
+                <p className="font-body-md text-pure-white">{colorLabel}</p>
               </div>
               <div className="border border-pure-white/10 rounded-md p-md">
-                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">Year</p>
+                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">{t('year')}</p>
                 <p className="font-body-md text-pure-white">{PRODUCT.year}</p>
               </div>
             </div>
 
             <div className="flex items-end justify-between gap-md border-t border-pure-white/10 pt-lg mb-lg">
               <div>
-                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">Price</p>
+                <p className="font-label-caps text-label-caps text-silver-mist mb-xs">{t('price')}</p>
                 <p className="font-display-xl text-[48px] leading-none text-pure-white">${PRODUCT.price.toLocaleString()}</p>
               </div>
               <button
@@ -119,14 +124,14 @@ export default function HermesBirkin25Detail() {
                 onClick={addToCart}
                 className="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-lg py-md rounded-lg hover:bg-inverse-primary transition-colors flex items-center gap-xs"
               >
-                Add to Bag
+                {t('addBag')}
                 <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
               </button>
             </div>
 
             <div className="space-y-sm text-silver-mist font-body-md text-body-md">
-              <p>Swift leather gives the black tone a smooth, deep finish with a softer hand than grained leathers.</p>
-              <p>Palladium hardware keeps the piece modern, restrained, and easy to style from formal looks to denim.</p>
+              <p>{t('swiftNote')}</p>
+              <p>{t('palladiumNote')}</p>
             </div>
           </section>
         </div>

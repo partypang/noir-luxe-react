@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const SHOE_PRODUCTS = [
   {
@@ -127,7 +128,7 @@ const COLOR_SWATCHES = {
   'White Distressed': 'bg-[#ece8de]',
 }
 
-function SneakerVisual({ product }) {
+function SneakerVisual({ product, t }) {
   return (
     <div className="relative w-full h-full overflow-hidden rounded-md bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.18),transparent_36%),linear-gradient(145deg,#101114,#030303)] flex items-center justify-center">
       <div className="absolute inset-x-8 bottom-10 h-px bg-pure-white/20" />
@@ -142,7 +143,7 @@ function SneakerVisual({ product }) {
         {product.tag}
       </div>
       <div className="absolute bottom-sm left-sm right-sm">
-        <p className="font-label-caps text-[10px] tracking-[0.18em] text-silver-mist uppercase">Gangnam Edit</p>
+        <p className="font-label-caps text-[10px] tracking-[0.18em] text-silver-mist uppercase">{t('gangnamEdit')}</p>
       </div>
     </div>
   )
@@ -150,6 +151,7 @@ function SneakerVisual({ product }) {
 
 export default function ShoesCollection() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   const [productsList, setProductsList] = useState(SHOE_PRODUCTS)
   const [selectedMaterials, setSelectedMaterials] = useState([])
   const [selectedColor, setSelectedColor] = useState(null)
@@ -225,10 +227,10 @@ export default function ShoesCollection() {
       <main className="flex-grow pt-[120px] pb-xl px-container-margin max-w-[1440px] mx-auto w-full">
         {/* Header */}
         <header className="mb-xl text-center md:text-left">
-          <p className="font-label-caps text-label-caps text-primary-container mb-sm tracking-[0.2em]">2026 SEOUL SNEAKER EDIT</p>
-          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">THE SHOES</h1>
+          <p className="font-label-caps text-label-caps text-primary-container mb-sm tracking-[0.2em]">{t('shoesEyebrow')}</p>
+          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">{t('shoesTitle')}</h1>
           <p className="font-body-lg text-body-lg text-silver-mist max-w-2xl">
-            Popular sneaker silhouettes for women in their 30s, curated from clean minimal classics to quiet luxury statements.
+            {t('shoesDesc')}
           </p>
         </header>
 
@@ -236,16 +238,16 @@ export default function ShoesCollection() {
           {/* Filters Sidebar */}
           <aside className="w-full md:w-64 flex-shrink-0 bg-graphite-base p-md rounded-lg h-fit border border-surface-container-high">
             <div className="flex justify-between items-center mb-md pb-sm border-b border-surface-container-high">
-              <h3 className="font-label-caps text-label-caps text-pure-white">FILTERS</h3>
+              <h3 className="font-label-caps text-label-caps text-pure-white">{t('filters')}</h3>
               <button onClick={clearFilters} className="text-silver-mist hover:text-pure-white font-body-sm text-body-sm transition-colors">
-                Clear All
+                {t('clearAll')}
               </button>
             </div>
 
             {/* Material Filter */}
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Material
+                {t('material')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               <div className="space-y-sm">
@@ -266,7 +268,7 @@ export default function ShoesCollection() {
             {/* Color Filter */}
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Color
+                {t('color')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               <div className="flex flex-wrap gap-sm">
@@ -288,17 +290,17 @@ export default function ShoesCollection() {
           {/* Product Grid */}
           <div className="flex-grow">
             <div className="flex justify-between items-center mb-md">
-              <span className="font-body-sm text-body-sm text-silver-mist">Showing {filteredProducts.length} Results</span>
+              <span className="font-body-sm text-body-sm text-silver-mist">{t('showingResults', { count: filteredProducts.length })}</span>
               <div className="flex items-center gap-sm">
-                <span className="font-body-sm text-body-sm text-silver-mist">Sort by:</span>
+                <span className="font-body-sm text-body-sm text-silver-mist">{t('sortBy')}</span>
                 <select 
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="bg-transparent border-none text-pure-white font-body-sm focus:ring-0 py-0 cursor-pointer"
                 >
-                  <option className="bg-graphite-base text-pure-white" value="newest">Newest Arrivals</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_high">Price: High to Low</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_low">Price: Low to High</option>
+                  <option className="bg-graphite-base text-pure-white" value="newest">{t('newest')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_high">{t('priceHigh')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_low">{t('priceLow')}</option>
                 </select>
               </div>
             </div>
@@ -314,7 +316,7 @@ export default function ShoesCollection() {
                         src={product.image}
                       />
                     ) : (
-                      <SneakerVisual product={product} />
+                      <SneakerVisual product={product} t={t} />
                     )}
                     {product.image && product.tag && (
                       <div className="absolute top-sm left-sm bg-pure-white text-pitch-black font-label-caps text-label-caps px-2 py-1 rounded-sm">
@@ -330,7 +332,7 @@ export default function ShoesCollection() {
                         <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
                           shopping_bag
                         </span>
-                        Add to Bag
+                        {t('addBag')}
                       </button>
                     </div>
                   </div>

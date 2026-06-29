@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const ACCESSORY_PRODUCTS = []
 
@@ -11,6 +12,7 @@ const COLOR_SWATCHES = {
 }
 
 export default function AccessoriesCollection() {
+  const { t } = useLanguage()
   const [productsList, setProductsList] = useState(ACCESSORY_PRODUCTS)
   const [selectedMaterials, setSelectedMaterials] = useState([])
   const [selectedColor, setSelectedColor] = useState(null)
@@ -59,25 +61,25 @@ export default function AccessoriesCollection() {
     <div className="bg-[#222326] min-h-screen flex flex-col text-on-surface">
       <main className="flex-grow pt-[120px] pb-xl px-container-margin max-w-[1440px] mx-auto w-full">
         <header className="mb-xl text-center md:text-left">
-          <p className="font-label-caps text-label-caps text-primary-container mb-sm tracking-[0.2em]">NOIR DETAILS</p>
-          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">THE ACCESSORIES</h1>
+          <p className="font-label-caps text-label-caps text-primary-container mb-sm tracking-[0.2em]">{t('accessoriesEyebrow')}</p>
+          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">{t('accessoriesTitle')}</h1>
           <p className="font-body-lg text-body-lg text-silver-mist max-w-2xl">
-            Finishing pieces for quiet luxury. Jewelry, eyewear, scarves, and objects selected to sharpen the silhouette.
+            {t('accessoriesDesc')}
           </p>
         </header>
 
         <div className="flex flex-col md:flex-row gap-lg">
           <aside className="w-full md:w-64 flex-shrink-0 bg-graphite-base p-md rounded-lg h-fit border border-surface-container-high">
             <div className="flex justify-between items-center mb-md pb-sm border-b border-surface-container-high">
-              <h3 className="font-label-caps text-label-caps text-pure-white">FILTERS</h3>
+              <h3 className="font-label-caps text-label-caps text-pure-white">{t('filters')}</h3>
               <button onClick={clearFilters} className="text-silver-mist hover:text-pure-white font-body-sm text-body-sm transition-colors">
-                Clear All
+                {t('clearAll')}
               </button>
             </div>
 
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Material
+                {t('material')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               {materialOptions.length > 0 ? (
@@ -95,13 +97,13 @@ export default function AccessoriesCollection() {
                   ))}
                 </div>
               ) : (
-                <p className="font-body-sm text-body-sm text-silver-mist">No materials yet.</p>
+                <p className="font-body-sm text-body-sm text-silver-mist">{t('noMaterialsYet')}</p>
               )}
             </div>
 
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Color
+                {t('color')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               {colorOptions.length > 0 ? (
@@ -118,24 +120,24 @@ export default function AccessoriesCollection() {
                   ))}
                 </div>
               ) : (
-                <p className="font-body-sm text-body-sm text-silver-mist">No colors yet.</p>
+                <p className="font-body-sm text-body-sm text-silver-mist">{t('noColorsYet')}</p>
               )}
             </div>
           </aside>
 
           <div className="flex-grow">
             <div className="flex justify-between items-center mb-md">
-              <span className="font-body-sm text-body-sm text-silver-mist">Showing {filteredProducts.length} Results</span>
+              <span className="font-body-sm text-body-sm text-silver-mist">{t('showingResults', { count: filteredProducts.length })}</span>
               <div className="flex items-center gap-sm">
-                <span className="font-body-sm text-body-sm text-silver-mist">Sort by:</span>
+                <span className="font-body-sm text-body-sm text-silver-mist">{t('sortBy')}</span>
                 <select
                   value={sortBy}
                   onChange={(event) => setSortBy(event.target.value)}
                   className="bg-transparent border-none text-pure-white font-body-sm focus:ring-0 py-0 cursor-pointer"
                 >
-                  <option className="bg-graphite-base text-pure-white" value="newest">Newest Arrivals</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_high">Price: High to Low</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_low">Price: Low to High</option>
+                  <option className="bg-graphite-base text-pure-white" value="newest">{t('newest')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_high">{t('priceHigh')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_low">{t('priceLow')}</option>
                 </select>
               </div>
             </div>
@@ -158,7 +160,7 @@ export default function AccessoriesCollection() {
                       <div className="absolute inset-0 bg-pitch-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-sm">
                         <button className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
                           <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>shopping_bag</span>
-                          Add to Bag
+                          {t('addBag')}
                         </button>
                       </div>
                     </div>
@@ -173,9 +175,9 @@ export default function AccessoriesCollection() {
             ) : (
               <div className="min-h-[360px] rounded-lg border border-surface-container-high bg-deep-slate flex flex-col items-center justify-center text-center px-lg">
                 <span className="material-symbols-outlined text-primary-container text-[42px] mb-sm">diamond</span>
-                <h2 className="font-headline-lg text-headline-lg text-pure-white mb-xs">Accessories are being curated.</h2>
+                <h2 className="font-headline-lg text-headline-lg text-pure-white mb-xs">{t('accessoriesEmptyTitle')}</h2>
                 <p className="font-body-md text-body-md text-silver-mist max-w-xl">
-                  The category is ready. Add product names and prices, and this section will become the accessories collection.
+                  {t('accessoriesEmptyDesc')}
                 </p>
               </div>
             )}

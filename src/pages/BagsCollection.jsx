@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const PRODUCTS = [
   {
@@ -11,7 +12,8 @@ const PRODUCTS = [
     tag: 'CURATED',
     image: '/products/hermes-birkin-25-black/hero.jpeg',
     detailPath: '/product/hermes-birkin-25-black-swift',
-    description: 'Black Swift Leather, Palladium Hardware'
+    description: 'Black Swift Leather, Palladium Hardware',
+    descriptionKo: '블랙 스위프트 가죽, 팔라듐 하드웨어'
   },
   {
     id: 'obsidian-tote',
@@ -65,6 +67,7 @@ const PRODUCTS = [
 
 export default function BagsCollection() {
   const navigate = useNavigate()
+  const { language, t } = useLanguage()
   const [productsList, setProductsList] = useState(PRODUCTS)
   const [selectedMaterials, setSelectedMaterials] = useState([])
   const [selectedColor, setSelectedColor] = useState(null)
@@ -134,9 +137,9 @@ export default function BagsCollection() {
       <main className="flex-grow pt-[120px] pb-xl px-container-margin max-w-[1440px] mx-auto w-full">
         {/* Header */}
         <header className="mb-xl text-center md:text-left">
-          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">THE BAGS</h1>
+          <h1 className="font-display-xl text-display-xl text-pure-white mb-sm">{t('bagsTitle')}</h1>
           <p className="font-body-lg text-body-lg text-silver-mist max-w-2xl">
-            Discover our curated collection of luxury handbags. Crafted for the modern silhouette, illuminated by the midnight stage.
+            {t('bagsDesc')}
           </p>
         </header>
 
@@ -144,16 +147,16 @@ export default function BagsCollection() {
           {/* Filters Sidebar */}
           <aside className="w-full md:w-64 flex-shrink-0 bg-graphite-base p-md rounded-lg h-fit border border-surface-container-high">
             <div className="flex justify-between items-center mb-md pb-sm border-b border-surface-container-high">
-              <h3 className="font-label-caps text-label-caps text-pure-white">FILTERS</h3>
+              <h3 className="font-label-caps text-label-caps text-pure-white">{t('filters')}</h3>
               <button onClick={clearFilters} className="text-silver-mist hover:text-pure-white font-body-sm text-body-sm transition-colors">
-                Clear All
+                {t('clearAll')}
               </button>
             </div>
 
             {/* Material Filter */}
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Material
+                {t('material')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               <div className="space-y-sm">
@@ -174,7 +177,7 @@ export default function BagsCollection() {
             {/* Color Filter */}
             <div className="mb-lg">
               <h4 className="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
-                Color
+                {t('color')}
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               <div className="flex flex-wrap gap-sm">
@@ -205,17 +208,17 @@ export default function BagsCollection() {
           {/* Product Grid */}
           <div className="flex-grow">
             <div className="flex justify-between items-center mb-md">
-              <span className="font-body-sm text-body-sm text-silver-mist">Showing {filteredProducts.length} Results</span>
+              <span className="font-body-sm text-body-sm text-silver-mist">{t('showingResults', { count: filteredProducts.length })}</span>
               <div className="flex items-center gap-sm">
-                <span className="font-body-sm text-body-sm text-silver-mist">Sort by:</span>
+                <span className="font-body-sm text-body-sm text-silver-mist">{t('sortBy')}</span>
                 <select 
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="bg-transparent border-none text-pure-white font-body-sm focus:ring-0 py-0 cursor-pointer"
                 >
-                  <option className="bg-graphite-base text-pure-white" value="newest">Newest Arrivals</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_high">Price: High to Low</option>
-                  <option className="bg-graphite-base text-pure-white" value="price_low">Price: Low to High</option>
+                  <option className="bg-graphite-base text-pure-white" value="newest">{t('newest')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_high">{t('priceHigh')}</option>
+                  <option className="bg-graphite-base text-pure-white" value="price_low">{t('priceLow')}</option>
                 </select>
               </div>
             </div>
@@ -243,7 +246,7 @@ export default function BagsCollection() {
                           <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
                             arrow_forward
                           </span>
-                          View Details
+                          {t('viewDetails')}
                         </Link>
                       ) : (
                         <button
@@ -254,14 +257,16 @@ export default function BagsCollection() {
                           <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
                             shopping_bag
                           </span>
-                          Add to Bag
+                          {t('addBag')}
                         </button>
                       )}
                     </div>
                   </div>
                   <div className="mt-auto">
                     <h3 className="font-headline-md text-headline-md text-pure-white mb-xs truncate">{product.name}</h3>
-                    <p className="font-body-sm text-body-sm text-silver-mist mb-sm truncate">{product.description}</p>
+                    <p className="font-body-sm text-body-sm text-silver-mist mb-sm truncate">
+                      {language === 'KO' && product.descriptionKo ? product.descriptionKo : product.description}
+                    </p>
                     <div className="font-body-lg text-body-lg text-pure-white">${product.price.toLocaleString()}</div>
                   </div>
                 </div>

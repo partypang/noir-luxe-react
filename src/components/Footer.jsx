@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-pitch-black border-t border-deep-slate full-width py-xl mt-xl">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-lg px-container-margin max-w-[1440px] mx-auto">
@@ -11,47 +14,47 @@ export default function Footer() {
             NOIR LUXE
           </Link>
           <p className="font-body-sm text-body-sm text-silver-mist mb-md max-w-xs">
-            Elevating the everyday through minimalist design and cinematic luxury.
+            {t('footerDesc')}
           </p>
         </div>
         {/* Links Columns */}
         <div className="col-span-1 md:col-span-2 grid grid-cols-2 gap-md">
           <div>
-            <h4 className="font-label-caps text-label-caps text-pure-white mb-md">Company</h4>
+            <h4 className="font-label-caps text-label-caps text-pure-white mb-md">{t('company')}</h4>
             <ul className="space-y-sm">
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Brand Story
+                  {t('brandStory')}
                 </a>
               </li>
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Sustainability
+                  {t('sustainability')}
                 </a>
               </li>
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Careers
+                  {t('careers')}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-label-caps text-label-caps text-pure-white mb-md">Support</h4>
+            <h4 className="font-label-caps text-label-caps text-pure-white mb-md">{t('support')}</h4>
             <ul className="space-y-sm">
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Legal
+                  {t('legal')}
                 </a>
               </li>
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Store Locator
+                  {t('storeLocator')}
                 </a>
               </li>
               <li>
                 <a className="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer block" href="#">
-                  Contact
+                  {t('contact')}
                 </a>
               </li>
             </ul>
@@ -59,14 +62,14 @@ export default function Footer() {
         </div>
         {/* Newsletter Column */}
         <div className="col-span-1 md:col-span-1">
-          <h4 className="font-label-caps text-label-caps text-pure-white mb-md">Join the Stage</h4>
+          <h4 className="font-label-caps text-label-caps text-pure-white mb-md">{t('joinStage')}</h4>
           <p className="font-body-sm text-body-sm text-silver-mist mb-sm">
-            Exclusive access to new collections and events.
+            {t('newsletterDesc')}
           </p>
           <form className="flex mt-sm border-b border-pure-white pb-2 relative" onSubmit={(e) => e.preventDefault()}>
             <input
               className="bg-transparent border-none p-0 flex-1 font-body-sm text-pure-white placeholder-silver-mist focus:ring-0 focus:outline-none w-full"
-              placeholder="Email Address"
+              placeholder={t('emailAddress')}
               type="email"
             />
             <button className="text-pure-white hover:text-primary-container transition-colors absolute right-0" type="submit">
@@ -76,7 +79,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="px-container-margin max-w-[1440px] mx-auto mt-xl pt-lg border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-sm">
-        <p className="font-body-sm text-body-sm text-silver-mist">© 2003 NOIR LUXE. ALL RIGHTS RESERVED.</p>
+        <p className="font-body-sm text-body-sm text-silver-mist">© 2003 NOIR LUXE. {t('rights')}</p>
         <div className="flex space-x-md">
           <a className="text-silver-mist hover:text-pure-white transition-colors" href="#">Instagram</a>
           <a className="text-silver-mist hover:text-pure-white transition-colors" href="#">Twitter</a>
