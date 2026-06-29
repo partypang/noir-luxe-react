@@ -1,107 +1,267 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext.jsx'
+
+function GoogleMark() {
+  return (
+    <svg aria-hidden="true" className="h-5 w-5" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+      <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" />
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06L5.84 9.9C6.71 7.31 9.14 5.38 12 5.38z" />
+    </svg>
+  )
+}
+
+const COPY = {
+  EN: {
+    login: {
+      google: 'Continue with Google',
+      divider: 'or',
+      email: 'Email',
+      emailPlaceholder: 'you@example.com',
+      password: 'Password',
+      passwordPlaceholder: 'Enter your password',
+      forgot: 'Forgot your password?',
+      submit: 'Log in',
+      submitting: 'Logging in...',
+      switchLead: "Don't have an account?",
+      switchAction: 'Sign up',
+      success: 'Logged in successfully.',
+    },
+    signup: {
+      google: 'Continue with Google',
+      divider: 'or',
+      nickname: 'Nickname',
+      nicknamePlaceholder: 'Display name',
+      email: 'Email',
+      emailPlaceholder: 'you@example.com',
+      password: 'Password',
+      passwordPlaceholder: 'Create a password',
+      passwordHelp: 'Please enter at least 8 characters.',
+      submit: 'Create account',
+      submitting: 'Creating account...',
+      switchLead: 'Already have an account?',
+      switchAction: 'Log in',
+      terms: 'By creating an account, you agree to the Terms of Use and Privacy Policy.',
+      success: 'Account created successfully.',
+    },
+    googleReady: 'Google sign-in is ready for OAuth connection.',
+    showPassword: 'Show password',
+    hidePassword: 'Hide password',
+  },
+  KO: {
+    login: {
+      google: 'Google로 계속하기',
+      divider: '또는',
+      email: '이메일',
+      emailPlaceholder: 'you@example.com',
+      password: '비밀번호',
+      passwordPlaceholder: '비밀번호를 입력하세요',
+      forgot: '비밀번호를 잊으셨나요?',
+      submit: '로그인',
+      submitting: '로그인 중...',
+      switchLead: '계정이 없으신가요?',
+      switchAction: '회원가입',
+      success: '로그인되었습니다.',
+    },
+    signup: {
+      google: 'Google로 계속하기',
+      divider: '또는',
+      nickname: '닉네임',
+      nicknamePlaceholder: '표시될 닉네임',
+      email: '이메일',
+      emailPlaceholder: 'you@example.com',
+      password: '비밀번호',
+      passwordPlaceholder: '비밀번호를 만들어 주세요',
+      passwordHelp: '8자 이상으로 입력해 주세요.',
+      submit: '계정 만들기',
+      submitting: '계정 생성 중...',
+      switchLead: '이미 계정이 있으신가요?',
+      switchAction: '로그인',
+      terms: '계정을 만들면 이용약관 및 개인정보처리방침에 동의하게 됩니다.',
+      success: '계정이 생성되었습니다.',
+    },
+    googleReady: 'Google 로그인은 OAuth 연결 준비 상태입니다.',
+    showPassword: '비밀번호 표시',
+    hidePassword: '비밀번호 숨기기',
+  },
+}
 
 export default function MembershipRegistration() {
   const navigate = useNavigate()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const location = useLocation()
+  const { language } = useLanguage()
+  const isSignup = location.pathname === '/register'
+  const copy = COPY[language] || COPY.EN
+  const modeCopy = isSignup ? copy.signup : copy.login
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const [formData, setFormData] = useState({
+    nickname: '',
+    email: '',
+    password: '',
+  })
+  const [showPassword, setShowPassword] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState('')
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData((current) => ({ ...current, [name]: value }))
+  }
+
+  const finishAuth = (notice) => {
+    const displayName = formData.nickname || formData.email.split('@')[0] || 'NOIR Member'
+    localStorage.setItem('customer_session', JSON.stringify({
+      email: formData.email,
+      name: displayName,
+      mode: isSignup ? 'signup' : 'login',
+      signedAt: new Date().toISOString(),
+    }))
+    setMessage(notice)
+    window.setTimeout(() => navigate('/'), 650)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
+    setMessage('')
+
+    window.setTimeout(() => {
       setIsSubmitting(false)
-      alert('Welcome to the Circle! Account created successfully.')
-      navigate('/')
-    }, 1200)
+      finishAuth(modeCopy.success)
+    }, 700)
+  }
+
+  const handleGoogle = () => {
+    setMessage(copy.googleReady)
   }
 
   return (
-    <div className="bg-pitch-black text-on-surface font-body-md min-h-screen flex flex-col overflow-x-hidden">
-      {/* Main Content Canvas */}
-      <main className="flex-grow flex items-center justify-center pt-32 pb-xl px-container-margin relative z-10">
-        {/* Registration Form Container */}
-        <div className="w-full max-w-[480px] bg-pitch-black p-lg flex flex-col items-center">
-          {/* Header */}
-          <div className="text-center mb-lg w-full">
-            <h1 className="font-display-xl text-[32px] text-pure-white tracking-tight mb-sm uppercase">JOIN THE CIRCLE</h1>
-            <p className="font-body-md text-body-md text-silver-mist max-w-[320px] mx-auto">
-              Unlock early access to new collections and exclusive member benefits.
+    <div className="min-h-screen bg-[#070707] text-on-surface flex items-center justify-center px-container-margin py-xl">
+      <Link
+        to="/"
+        aria-label="NOIR LUXE Home"
+        className="absolute left-container-margin top-md font-display-lg text-[34px] text-pure-white tracking-tighter"
+      >
+        NOIR LUXE
+      </Link>
+
+      <main className="w-full max-w-[420px]">
+        <form onSubmit={handleSubmit} className="w-full">
+          <button
+            type="button"
+            onClick={handleGoogle}
+            className="w-full h-[52px] rounded-[14px] border border-pure-white/18 bg-[#191919] text-pure-white font-body-md text-[16px] font-bold flex items-center justify-center gap-sm hover:border-[#f4b400]/70 hover:bg-[#202020] transition-colors"
+          >
+            <GoogleMark />
+            {modeCopy.google}
+          </button>
+
+          <div className="flex items-center justify-center my-lg">
+            <span className="font-body-sm text-body-sm text-silver-mist/70">{modeCopy.divider}</span>
+          </div>
+
+          <div className="space-y-md">
+            {isSignup && (
+              <div className="space-y-xs">
+                <label htmlFor="nickname" className="font-body-md text-[15px] font-bold text-pure-white">
+                  {modeCopy.nickname}
+                </label>
+                <input
+                  id="nickname"
+                  name="nickname"
+                  value={formData.nickname}
+                  onChange={handleChange}
+                  placeholder={modeCopy.nicknamePlaceholder}
+                  required={isSignup}
+                  className="w-full h-[48px] rounded-[14px] border border-pure-white/10 bg-[#151515] px-sm text-pure-white placeholder:text-silver-mist/45 focus:border-[#f4b400]/80 focus:outline-none focus:ring-0"
+                />
+              </div>
+            )}
+
+            <div className="space-y-xs">
+              <label htmlFor="email" className="font-body-md text-[15px] font-bold text-pure-white">
+                {modeCopy.email}
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder={modeCopy.emailPlaceholder}
+                required
+                className="w-full h-[48px] rounded-[14px] border border-pure-white/10 bg-[#151515] px-sm text-pure-white placeholder:text-silver-mist/45 focus:border-[#f4b400]/80 focus:outline-none focus:ring-0"
+              />
+            </div>
+
+            <div className="space-y-xs">
+              <label htmlFor="password" className="font-body-md text-[15px] font-bold text-pure-white">
+                {modeCopy.password}
+              </label>
+              <div className="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder={modeCopy.passwordPlaceholder}
+                  minLength={isSignup ? 8 : 1}
+                  required
+                  className="w-full h-[48px] rounded-[14px] border border-pure-white/10 bg-[#151515] px-sm pr-[48px] text-pure-white placeholder:text-silver-mist/45 focus:border-[#f4b400]/80 focus:outline-none focus:ring-0"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((current) => !current)}
+                  aria-label={showPassword ? copy.hidePassword : copy.showPassword}
+                  className="absolute right-sm top-1/2 -translate-y-1/2 text-silver-mist hover:text-pure-white transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[20px]">
+                    {showPassword ? 'visibility_off' : 'visibility'}
+                  </span>
+                </button>
+              </div>
+              {isSignup ? (
+                <p className="font-body-sm text-body-sm text-silver-mist/75">{modeCopy.passwordHelp}</p>
+              ) : (
+                <div className="flex justify-end pt-xs">
+                  <button type="button" className="font-body-sm text-body-sm text-silver-mist hover:text-[#f4b400] transition-colors">
+                    {modeCopy.forgot}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {message && (
+            <p className="mt-md rounded-lg border border-[#f4b400]/30 bg-[#f4b400]/10 px-sm py-xs text-center font-body-sm text-[#f4b400]">
+              {message}
             </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="mt-lg h-[50px] w-full rounded-[14px] bg-[#f4b400] text-pitch-black font-body-md text-[16px] font-extrabold shadow-[0_20px_34px_rgba(244,180,0,0.18)] hover:bg-[#d99b00] disabled:cursor-wait disabled:opacity-70 transition-colors"
+          >
+            {isSubmitting ? modeCopy.submitting : modeCopy.submit}
+          </button>
+
+          <div className="mt-lg text-center font-body-md text-body-md text-silver-mist">
+            {modeCopy.switchLead}{' '}
+            <Link to={isSignup ? '/login' : '/register'} className="font-bold text-[#f4b400] hover:text-pure-white transition-colors">
+              {modeCopy.switchAction}
+            </Link>
           </div>
 
-          {/* Social Sign-up */}
-          <div className="w-full space-y-sm mb-md">
-            <button className="w-full bg-graphite-base border border-pure-white rounded-lg py-sm px-md flex items-center justify-center space-x-sm hover:bg-surface-container-low transition-colors duration-300">
-              <svg className="w-5 h-5 text-pure-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
-              </svg>
-              <span className="font-body-md text-body-md text-pure-white">Continue with Google</span>
-            </button>
-            <button className="w-full bg-graphite-base border border-pure-white rounded-lg py-sm px-md flex items-center justify-center space-x-sm hover:bg-surface-container-low transition-colors duration-300">
-              <svg className="w-5 h-5 text-pure-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"></path>
-              </svg>
-              <span className="font-body-md text-body-md text-pure-white">Continue with Apple</span>
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="w-full flex items-center my-md">
-            <div className="flex-grow border-t border-deep-slate"></div>
-            <span className="mx-sm font-label-caps text-label-caps text-silver-mist uppercase">OR CONTINUE WITH EMAIL</span>
-            <div className="flex-grow border-t border-deep-slate"></div>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="w-full space-y-md">
-            <div className="relative group border-b border-pure-white pb-xs">
-              <input 
-                className="w-full bg-transparent border-0 text-pure-white font-body-md py-sm px-0 focus:ring-0 focus:outline-none" 
-                id="email" 
-                name="email" 
-                placeholder="Email Address" 
-                required 
-                type="email" 
-              />
-            </div>
-            <div className="relative group border-b border-pure-white pb-xs">
-              <input 
-                className="w-full bg-transparent border-0 text-pure-white font-body-md py-sm px-0 focus:ring-0 focus:outline-none" 
-                id="password" 
-                name="password" 
-                placeholder="Password" 
-                required 
-                type="password" 
-              />
-            </div>
-            <div className="relative group border-b border-pure-white pb-xs">
-              <input 
-                className="w-full bg-transparent border-0 text-pure-white font-body-md py-sm px-0 focus:ring-0 focus:outline-none" 
-                id="pccc" 
-                name="pccc" 
-                placeholder="Personal Customs Clearance Code (PCCC)" 
-                required 
-                type="text" 
-              />
-            </div>
-
-            <button 
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-primary-container text-pure-white font-body-md font-semibold py-sm px-md rounded-lg mt-md hover:bg-inverse-primary transition-colors duration-300"
-            >
-              {isSubmitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}
-            </button>
-          </form>
-
-          {/* Login Link */}
-          <div className="mt-md text-center">
-            <span className="font-body-sm text-body-sm text-silver-mist">
-              Already have an account? 
-              <a className="text-primary-container hover:text-pure-white transition-colors duration-300 ml-1" href="#">Log in</a>
-            </span>
-          </div>
-        </div>
+          {isSignup && (
+            <p className="mt-lg text-center font-body-sm text-body-sm text-silver-mist/55">
+              {modeCopy.terms}
+            </p>
+          )}
+        </form>
       </main>
     </div>
   )

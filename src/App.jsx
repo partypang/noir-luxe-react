@@ -71,7 +71,8 @@ export default function App() {
         <Route path="/product/hermes-birkin-25-black-swift" element={<CustomerLayout><HermesBirkin25Detail /></CustomerLayout>} />
         <Route path="/product/void-ankle-boot" element={<CustomerLayout><VoidAnkleBootDetail /></CustomerLayout>} />
         <Route path="/cart" element={<CustomerLayout><ShoppingCart /></CustomerLayout>} />
-        <Route path="/register" element={<CustomerLayout><MembershipRegistration /></CustomerLayout>} />
+        <Route path="/login" element={<MembershipRegistration />} />
+        <Route path="/register" element={<MembershipRegistration />} />
 
         {/* Transactional Routes (No standard header/footer) */}
         <Route path="/checkout" element={<SecureCheckoutPayPal />} />

@@ -29,7 +29,7 @@ export default function SecureCheckoutPayPal() {
               <div className="flex justify-between items-end border-b border-deep-slate pb-xs">
                 <h2 className="font-headline-md text-headline-md text-pure-white">Contact Information</h2>
                 <span className="font-body-sm text-body-sm text-silver-mist">
-                  Already have an account? <Link className="text-pure-white underline hover:text-primary-container transition-colors" to="/register">Log in</Link>
+                  Already have an account? <Link className="text-pure-white underline hover:text-primary-container transition-colors" to="/login">Log in</Link>
                 </span>
               </div>
               <div className="space-y-sm">

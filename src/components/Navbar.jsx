@@ -127,7 +127,7 @@ export default function Navbar() {
           
           {/* Profile Button */}
           <Link 
-            to="/register" 
+            to="/login"
             className="w-10 h-10 rounded-full bg-deep-slate hover:bg-surface-bright flex items-center justify-center text-silver-mist hover:text-pure-white transition-all duration-300 border border-white/5 hover:border-white/25 hidden sm:flex"
             aria-label="Profile"
           >
@@ -201,7 +201,7 @@ export default function Navbar() {
           <Link 
             onClick={() => setMobileMenuOpen(false)}
             className="font-label-caps text-[16px] leading-none tracking-[0.1em] font-semibold text-silver-mist py-2"
-            to="/register"
+            to="/login"
           >
             {t('account')}
           </Link>
