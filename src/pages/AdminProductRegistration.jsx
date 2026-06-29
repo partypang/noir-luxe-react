@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const DEFAULT_IMAGES = {
   Bags: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDGPH7w0hvWLyOV2V0-epDhQRusLksgwcvI2xp1Atf2zPzemxUH1HTPp_yoQ0kme-WJcmCC_DkQkGdmR2un-Sgp9baMTrYZeAaupNb_drih_zGWtTXf3U_n6vrN2gxQcSLDKON5ja5dssX_tN_M0vlBSVZ5Zx0YJ6VIgWRz08hMnb7bJV35DHIjo7VEZH8p8H7JVfwACisx3dlXXWwcSaQ-yDoVisbBRp1VhvpWbnUA58ywm-sOYPBq-Pyg91YmbtYDYSnIDm8Qj5Tk',
-  Shoes: 'https://lh3.googleusercontent.com/aida-public/AB6AXuApTzmODYNNdeGyZYGZWWaUeryTafYeTWCebWqwUtvjP1smhwhCFmcSu9DL4vhbnsiy1sSLLa5OAyScrq-k3THrEkh-SvTOMx6-brZ42EubZnj9x26QTDGiQ7gs5N-n3Egl6PXviyLlBhAwyMGJ3KSqVlKzTvpKwgpZPndZvxpPPMnkOod-3jwA4On1-JiyaGlv3WY9aOlQtPXz_lFazEEj9JFEtmzznxYSD-xgDCrm7S1NdyW3X_l8jouH2a4BaD7JQumKIasWfVse'
+  Shoes: 'https://lh3.googleusercontent.com/aida-public/AB6AXuApTzmODYNNdeGyZYGZWWaUeryTafYeTWCebWqwUtvjP1smhwhCFmcSu9DL4vhbnsiy1sSLLa5OAyScrq-k3THrEkh-SvTOMx6-brZ42EubZnj9x26QTDGiQ7gs5N-n3Egl6PXviyLlBhAwyMGJ3KSqVlKzTvpKwgpZPndZvxpPPMnkOod-3jwA4On1-JiyaGlv3WY9aOlQtPXz_lFazEEj9JFEtmzznxYSD-xgDCrm7S1NdyW3X_l8jouH2a4BaD7JQumKIasWfVse',
+  Accessories: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqPz3TmuFKvIMfABUKIbpVWrAoMDnvAr1vcSu6NxQ3jdIcZKF5erxhGL4m5twgo3ZBMP2jStJTryRmW-YMNDzXflbnGsG3vw1TvwxGzsRH3ypytOA6oEvkh-dNFKGjA8JIBD_l4IRZuCo1UyZ3U9MW1AvtjTIkfsulcX0BSlJfWBqeko6IHkg0KJcUFV9EGGDDuHN377YaeiWuXjuZ4P81g9XAC4PKdbjwCRJbgdVwOX1B7hWqRLDJ4h4mB89RSCVAWtfP4Tjg5-y2'
 }
 
 export default function AdminProductRegistration() {
@@ -53,8 +54,10 @@ export default function AdminProductRegistration() {
       // Redirect to the collection page
       if (formData.category === 'Bags') {
         navigate('/collection')
-      } else {
+      } else if (formData.category === 'Shoes') {
         navigate('/shoes')
+      } else {
+        navigate('/accessories')
       }
     }, 800)
   }
@@ -139,6 +142,7 @@ export default function AdminProductRegistration() {
                   >
                     <option value="Bags">가방 (Bags)</option>
                     <option value="Shoes">신발 (Shoes)</option>
+                    <option value="Accessories">악세사리 (Accessories)</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-xs">

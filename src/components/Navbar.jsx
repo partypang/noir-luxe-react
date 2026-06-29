@@ -7,6 +7,7 @@ export default function Navbar() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
   const dropdownRef = useRef(null)
+  const accessoriesLabel = language === 'KO' ? '악세사리' : 'Accessories'
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -71,9 +72,9 @@ export default function Navbar() {
                 isActive ? 'text-pure-white border-b-2 border-primary-container pb-2' : 'text-silver-mist hover:text-pure-white'
               }`
             } 
-            to="/admin"
+            to="/accessories"
           >
-            {t('admin')}
+            {accessoriesLabel}
           </NavLink>
         </div>
 
@@ -196,9 +197,9 @@ export default function Navbar() {
             className={({ isActive }) => 
               `font-label-caps text-[16px] leading-none tracking-[0.1em] font-semibold py-2 ${isActive ? 'text-primary-container font-bold' : 'text-silver-mist'}`
             } 
-            to="/admin"
+            to="/accessories"
           >
-            {t('admin')}
+            {accessoriesLabel}
           </NavLink>
           <Link 
             onClick={() => setMobileMenuOpen(false)}

@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import BagsCollection from './pages/BagsCollection.jsx'
 import ShoesCollection from './pages/ShoesCollection.jsx'
+import AccessoriesCollection from './pages/AccessoriesCollection.jsx'
 import ObsidianToteDetail from './pages/ObsidianToteDetail.jsx'
 import ObsidianTotePremiumExperience from './pages/ObsidianTotePremiumExperience.jsx'
 import VoidAnkleBootDetail from './pages/VoidAnkleBootDetail.jsx'
@@ -63,6 +64,7 @@ export default function App() {
         <Route path="/" element={<CustomerLayout><Home /></CustomerLayout>} />
         <Route path="/collection" element={<CustomerLayout><BagsCollection /></CustomerLayout>} />
         <Route path="/shoes" element={<CustomerLayout><ShoesCollection /></CustomerLayout>} />
+        <Route path="/accessories" element={<CustomerLayout><AccessoriesCollection /></CustomerLayout>} />
         <Route path="/product/obsidian-tote" element={<CustomerLayout><ObsidianToteDetail /></CustomerLayout>} />
         <Route path="/product/obsidian-tote/premium" element={<CustomerLayout><ObsidianTotePremiumExperience /></CustomerLayout>} />
         <Route path="/product/void-ankle-boot" element={<CustomerLayout><VoidAnkleBootDetail /></CustomerLayout>} />
