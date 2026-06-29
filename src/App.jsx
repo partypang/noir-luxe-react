@@ -10,6 +10,7 @@ import ObsidianToteDetail from './pages/ObsidianToteDetail.jsx'
 import ObsidianTotePremiumExperience from './pages/ObsidianTotePremiumExperience.jsx'
 import HermesBirkin25Detail from './pages/HermesBirkin25Detail.jsx'
 import VoidAnkleBootDetail from './pages/VoidAnkleBootDetail.jsx'
+import GenericProductDetail from './pages/GenericProductDetail.jsx'
 import ShoppingCart from './pages/ShoppingCart.jsx'
 import SecureCheckoutPayPal from './pages/SecureCheckoutPayPal.jsx'
 import MembershipRegistration from './pages/MembershipRegistration.jsx'
@@ -70,6 +71,7 @@ export default function App() {
         <Route path="/product/obsidian-tote/premium" element={<CustomerLayout><ObsidianTotePremiumExperience /></CustomerLayout>} />
         <Route path="/product/hermes-birkin-25-black-swift" element={<CustomerLayout><HermesBirkin25Detail /></CustomerLayout>} />
         <Route path="/product/void-ankle-boot" element={<CustomerLayout><VoidAnkleBootDetail /></CustomerLayout>} />
+        <Route path="/product/:productId" element={<CustomerLayout><GenericProductDetail /></CustomerLayout>} />
         <Route path="/cart" element={<CustomerLayout><ShoppingCart /></CustomerLayout>} />
         <Route path="/login" element={<MembershipRegistration />} />
         <Route path="/register" element={<MembershipRegistration />} />

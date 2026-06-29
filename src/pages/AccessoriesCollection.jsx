@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext.jsx'
 
 const ACCESSORY_PRODUCTS = []
@@ -144,9 +145,12 @@ export default function AccessoriesCollection() {
 
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
-                {filteredProducts.map((product) => (
+                {filteredProducts.map((product) => {
+                  const detailPath = product.detailPath || `/product/${product.id}`
+
+                  return (
                   <div key={product.id} className="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-all">
-                    <div className="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+                    <Link to={detailPath} className="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
                       <img
                         className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform"
                         alt={product.name}
@@ -158,19 +162,21 @@ export default function AccessoriesCollection() {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-pitch-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-sm">
-                        <button className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
-                          <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>shopping_bag</span>
-                          {t('addBag')}
-                        </button>
+                        <span className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+                          <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
+                          {t('viewDetails')}
+                        </span>
                       </div>
-                    </div>
+                    </Link>
                     <div className="mt-auto">
-                      <h3 className="font-headline-md text-headline-md text-pure-white mb-xs truncate">{product.name}</h3>
+                      <Link to={detailPath} className="block font-headline-md text-headline-md text-pure-white mb-xs truncate hover:text-primary-container transition-colors">
+                        {product.name}
+                      </Link>
                       <p className="font-body-sm text-body-sm text-silver-mist mb-sm truncate">{product.description}</p>
                       <div className="font-body-lg text-body-lg text-pure-white">${Number(product.price).toLocaleString()}</div>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             ) : (
               <div className="min-h-[360px] rounded-lg border border-surface-container-high bg-deep-slate flex flex-col items-center justify-center text-center px-lg">
