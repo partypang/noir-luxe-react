@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const PRODUCTS = [
+  {
+    id: 'hermes-birkin-25-black-swift',
+    name: 'Hermes Birkin 25 Black Swift',
+    material: 'Swift Leather',
+    color: 'Black',
+    price: 16000,
+    tag: 'CURATED',
+    image: '/products/hermes-birkin-25-black/hero.jpeg',
+    detailPath: '/product/hermes-birkin-25-black-swift',
+    description: 'Black Swift Leather, Palladium Hardware'
+  },
   {
     id: 'obsidian-tote',
     name: 'The Obsidian Tote',
@@ -10,6 +21,7 @@ const PRODUCTS = [
     price: 2450,
     tag: 'NEW',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAeSr5byowDPtiESLaor8QeqmLNF9X-PAYhbXO2Xd2OSN5cBeM1QHE-9z0EhyxABMFPPay60bEbvJU6-1mWxNS1h6iWN5T7OSrxi2rHeSh-tIoz1b-bBJq0ltAcgQ5u04ieGA-hM2SdjgAw2ovWDLR-H1dHWNy9bbpKjvadSKIOzLxmaXtf-B9Hze6B-pF-6S5f5zw0vbDLyj1aYR-Hacj1ReqVXIaLm2Suung2jAqDEjZe1wpvdppIU5NG4o5XhxHvwGwLd3mGCwSR',
+    detailPath: '/product/obsidian-tote',
     description: 'Smooth Calfskin, Silver Hardware'
   },
   {
@@ -52,6 +64,7 @@ const PRODUCTS = [
 ]
 
 export default function BagsCollection() {
+  const navigate = useNavigate()
   const [productsList, setProductsList] = useState(PRODUCTS)
   const [selectedMaterials, setSelectedMaterials] = useState([])
   const [selectedColor, setSelectedColor] = useState(null)
@@ -75,6 +88,33 @@ export default function BagsCollection() {
     setSelectedMaterials([])
     setSelectedColor(null)
   }
+
+  const addToCart = (product) => {
+    const existingItems = JSON.parse(localStorage.getItem('cart_items') || '[]')
+    const existingItem = existingItems.find(item => item.id === product.id)
+
+    const nextItems = existingItem
+      ? existingItems.map(item => (
+          item.id === product.id ? { ...item, quantity: Number(item.quantity || 1) + 1 } : item
+        ))
+      : [
+          ...existingItems,
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            color: product.color,
+            category: 'Bags',
+            quantity: 1,
+          },
+        ]
+
+    localStorage.setItem('cart_items', JSON.stringify(nextItems))
+    navigate('/cart')
+  }
+
+  const materialOptions = [...new Set(productsList.map(product => product.material).filter(Boolean))]
 
   // Filter and Sort logic
   let filteredProducts = productsList.filter(product => {
@@ -117,7 +157,7 @@ export default function BagsCollection() {
                 <span className="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
               </h4>
               <div className="space-y-sm">
-                {['Calfskin Leather', 'Suede', 'Exotic'].map(material => (
+                {materialOptions.map(material => (
                   <label key={material} className="flex items-center gap-sm cursor-pointer group">
                     <input 
                       type="checkbox"
@@ -185,7 +225,7 @@ export default function BagsCollection() {
                 <div key={product.id} className="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-all">
                   <div className="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
                     <img 
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" 
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105 transform"
                       alt={product.name}
                       src={product.image} 
                     />
@@ -195,15 +235,28 @@ export default function BagsCollection() {
                       </div>
                     )}
                     <div className="absolute inset-0 bg-pitch-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-sm">
-                      <Link 
-                        to={product.id === 'obsidian-tote' ? '/product/obsidian-tote' : '#'}
-                        className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs"
-                      >
-                        <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
-                          {product.id === 'obsidian-tote' ? 'arrow_forward' : 'shopping_bag'}
-                        </span>
-                        {product.id === 'obsidian-tote' ? 'View Details' : 'Add to Bag'}
-                      </Link>
+                      {product.detailPath ? (
+                        <Link
+                          to={product.detailPath}
+                          className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs"
+                        >
+                          <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
+                            arrow_forward
+                          </span>
+                          View Details
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => addToCart(product)}
+                          className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs"
+                        >
+                          <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
+                            shopping_bag
+                          </span>
+                          Add to Bag
+                        </button>
+                      )}
                     </div>
                   </div>
                   <div className="mt-auto">
