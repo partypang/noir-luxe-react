@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
@@ -28,6 +28,26 @@ function CustomerLayout({ children }) {
   )
 }
 
+function MaterialIconGuard() {
+  useEffect(() => {
+    const protectIcons = () => {
+      document.querySelectorAll('.material-symbols-outlined').forEach((icon) => {
+        icon.classList.add('notranslate')
+        icon.setAttribute('translate', 'no')
+        icon.setAttribute('aria-hidden', 'true')
+      })
+    }
+
+    protectIcons()
+    const observer = new MutationObserver(protectIcons)
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    return () => observer.disconnect()
+  }, [])
+
+  return null
+}
+
 // Protected Route for Admin Portal
 function AdminRoute({ children }) {
   const isAuthenticated = sessionStorage.getItem('admin_auth') === 'true'
@@ -37,6 +57,7 @@ function AdminRoute({ children }) {
 export default function App() {
   return (
     <BrowserRouter>
+      <MaterialIconGuard />
       <Routes>
         {/* Customer Facing Routes with Navbar and Footer */}
         <Route path="/" element={<CustomerLayout><Home /></CustomerLayout>} />
