@@ -1,64 +1,97 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ShoppingCart() {
-  const [quantity, setQuantity] = useState(1)
-  const price = 2450
+function loadCartItems() {
+  try {
+    return JSON.parse(localStorage.getItem('cart_items') || '[]')
+  } catch {
+    return []
+  }
+}
 
-  const handleIncrease = () => setQuantity(quantity + 1)
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
-    }
+export default function ShoppingCart() {
+  const [cartItems, setCartItems] = useState(loadCartItems)
+
+  const persistCart = (nextItems) => {
+    setCartItems(nextItems)
+    localStorage.setItem('cart_items', JSON.stringify(nextItems))
   }
 
-  const subtotal = price * quantity
+  const handleIncrease = (id) => {
+    persistCart(cartItems.map(item => (
+      item.id === id ? { ...item, quantity: Number(item.quantity || 1) + 1 } : item
+    )))
+  }
+
+  const handleDecrease = (id) => {
+    persistCart(cartItems.flatMap(item => {
+      if (item.id !== id) return [item]
+
+      const nextQuantity = Number(item.quantity || 1) - 1
+      return nextQuantity > 0 ? [{ ...item, quantity: nextQuantity }] : []
+    }))
+  }
+
+  const handleRemove = (id) => {
+    persistCart(cartItems.filter(item => item.id !== id))
+  }
+
+  const subtotal = cartItems.reduce((sum, item) => (
+    sum + Number(item.price || 0) * Number(item.quantity || 1)
+  ), 0)
 
   return (
     <div className="bg-pitch-black min-h-screen flex flex-col text-on-surface">
       {/* Main Content Canvas */}
       <main className="flex-grow w-full max-w-[1440px] mx-auto px-container-margin py-xl pt-[120px]">
         <h1 className="font-display-xl text-display-xl mb-xl tracking-tighter">YOUR CART</h1>
-        {quantity > 0 ? (
+        {cartItems.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl relative">
             {/* Left Column: Items */}
             <div className="lg:col-span-8 flex flex-col gap-xl">
-              {/* Cart Item */}
-              <div className="flex flex-col sm:flex-row gap-lg border-b border-pure-white/10 pb-lg">
-                <div className="w-full sm:w-[240px] h-[320px] shrink-0 bg-surface-container rounded">
-                  <img 
-                    alt="The Obsidian Tote" 
-                    className="w-full h-full object-cover rounded shadow-none filter grayscale contrast-125" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2AKP01BnYefBLeC9yx1SXxB2Pg97kp9xXEN7iTvwc0ukZcQmHOlx6pMb9AwLn1PxoGV_RxX9ri2monzZuok7RIAjM58A9NXIjk24iJcx_fNJ7boMHqW1b6q5zz8XwmR2gEv8rcWMZlzVNq-cjSvBGAirR2RLSCX9irMvidPXrWNxBXOliXpMIIT9E-lURHMQy6IroEI1Ta8OYEdRzUuqF-DQVvD1nmP4nAUBWY3ukoqZIB2j2JmwQyrUvgCYkfoeXPzTht7cYOcST" 
-                  />
-                </div>
-                <div className="flex flex-col flex-grow justify-between py-sm">
-                  <div className="flex justify-between items-start gap-md">
-                    <div>
-                      <h2 className="font-display-xl text-[40px] leading-none mb-xs tracking-tighter uppercase">The Obsidian Tote</h2>
-                      <p className="font-label-caps text-label-caps text-silver-mist">PITCH BLACK</p>
-                    </div>
-                    <p className="font-headline-md text-headline-md">${price.toLocaleString()}</p>
+              {cartItems.map(item => (
+                <div key={item.id} className="flex flex-col sm:flex-row gap-lg border-b border-pure-white/10 pb-lg">
+                  <div className="w-full sm:w-[240px] h-[320px] shrink-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.12),transparent_34%),linear-gradient(145deg,#141519,#030303)] rounded flex items-center justify-center overflow-hidden">
+                    {item.image ? (
+                      <img
+                        alt={item.name}
+                        className="w-full h-full object-contain p-sm rounded shadow-none"
+                        src={item.image}
+                      />
+                    ) : (
+                      <div className="px-md text-center font-label-caps text-label-caps text-silver-mist">
+                        {item.name}
+                      </div>
+                    )}
                   </div>
-                  <div className="flex justify-between items-end mt-lg">
-                    <div className="flex items-center gap-md border border-pure-white/20 rounded px-sm py-xs">
-                      <button onClick={handleDecrease} className="text-silver-mist hover:text-pure-white transition-colors">
-                        <span className="material-symbols-outlined text-[18px]">remove</span>
-                      </button>
-                      <span className="font-body-md w-xs text-center">{quantity}</span>
-                      <button onClick={handleIncrease} className="text-silver-mist hover:text-pure-white transition-colors">
-                        <span className="material-symbols-outlined text-[18px]">add</span>
+                  <div className="flex flex-col flex-grow justify-between py-sm">
+                    <div className="flex justify-between items-start gap-md">
+                      <div>
+                        <h2 className="font-display-xl text-[32px] sm:text-[40px] leading-none mb-xs tracking-tighter uppercase">{item.name}</h2>
+                        <p className="font-label-caps text-label-caps text-silver-mist">{item.color || item.category}</p>
+                      </div>
+                      <p className="font-headline-md text-headline-md">${Number(item.price || 0).toLocaleString()}</p>
+                    </div>
+                    <div className="flex justify-between items-end mt-lg">
+                      <div className="flex items-center gap-md border border-pure-white/20 rounded px-sm py-xs">
+                        <button onClick={() => handleDecrease(item.id)} className="text-silver-mist hover:text-pure-white transition-colors">
+                          <span className="material-symbols-outlined text-[18px]">remove</span>
+                        </button>
+                        <span className="font-body-md w-xs text-center">{Number(item.quantity || 1)}</span>
+                        <button onClick={() => handleIncrease(item.id)} className="text-silver-mist hover:text-pure-white transition-colors">
+                          <span className="material-symbols-outlined text-[18px]">add</span>
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => handleRemove(item.id)}
+                        className="font-label-caps text-label-caps text-silver-mist hover:text-error transition-colors border-b border-transparent hover:border-error pb-[2px]"
+                      >
+                        REMOVE
                       </button>
                     </div>
-                    <button 
-                      onClick={() => setQuantity(0)} 
-                      className="font-label-caps text-label-caps text-silver-mist hover:text-error transition-colors border-b border-transparent hover:border-error pb-[2px]"
-                    >
-                      REMOVE
-                    </button>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
 
             {/* Right Column: Summary Sidebar */}
@@ -101,8 +134,8 @@ export default function ShoppingCart() {
           <div className="text-center py-2xl">
             <h2 className="font-headline-lg text-pure-white mb-md">Your Cart is Empty</h2>
             <p className="font-body-md text-silver-mist mb-xl">Add some premium items to your collection.</p>
-            <Link to="/collection" className="font-label-caps text-label-caps text-pure-white bg-primary-container px-[32px] py-[16px] rounded-lg hover:bg-inverse-primary transition-all duration-300">
-              Go to Bags Collection
+            <Link to="/shoes" className="font-label-caps text-label-caps text-pure-white bg-primary-container px-[32px] py-[16px] rounded-lg hover:bg-inverse-primary transition-all duration-300">
+              Go to Shoes Collection
             </Link>
           </div>
         )}

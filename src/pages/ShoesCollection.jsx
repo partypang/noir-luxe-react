@@ -1,17 +1,18 @@
 import React, { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SHOE_PRODUCTS = [
   {
     id: 'nike-dunk-low',
-    name: 'Nike Dunk Low',
-    material: 'Leather',
+    name: "Nike Dunk Low Retro SE 'Triple Black'",
+    material: 'Suede / Leather',
     color: 'Black',
-    colors: ['Black', 'White/Panda', 'Pink'],
+    colors: ['Black'],
     price: 85,
     tag: '#1',
+    image: 'https://img.sportinn.com.tr/nike-dunk-low-retro-se-triple-black-erkek-sneaker-ayakkabi-ib6651-001-209535-69-B.jpg',
     accent: 'from-white via-neutral-200 to-black',
-    description: 'Panda tones and soft pink options for a clean city sneaker rotation.'
+    description: 'Full triple-black Dunk Low profile with tonal Swoosh, suede texture, and black rubber sole.'
   },
   {
     id: 'adidas-samba-og',
@@ -148,6 +149,7 @@ function SneakerVisual({ product }) {
 }
 
 export default function ShoesCollection() {
+  const navigate = useNavigate()
   const [productsList, setProductsList] = useState(SHOE_PRODUCTS)
   const [selectedMaterials, setSelectedMaterials] = useState([])
   const [selectedColor, setSelectedColor] = useState(null)
@@ -170,6 +172,32 @@ export default function ShoesCollection() {
   const clearFilters = () => {
     setSelectedMaterials([])
     setSelectedColor(null)
+  }
+
+  const addToCart = (product) => {
+    const existingItems = JSON.parse(localStorage.getItem('cart_items') || '[]')
+    const colorLabel = (product.colors || [product.color]).join(' / ')
+    const existingItem = existingItems.find(item => item.id === product.id)
+
+    const nextItems = existingItem
+      ? existingItems.map(item => (
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        ))
+      : [
+          ...existingItems,
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            color: colorLabel,
+            category: 'Shoes',
+            quantity: 1,
+          },
+        ]
+
+    localStorage.setItem('cart_items', JSON.stringify(nextItems))
+    navigate('/cart')
   }
 
   const materialOptions = useMemo(() => {
@@ -281,7 +309,7 @@ export default function ShoesCollection() {
                   <div className="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
                     {product.image ? (
                       <img
-                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform"
+                        className="w-full h-full object-contain p-sm opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105 transform"
                         alt={product.name}
                         src={product.image}
                       />
@@ -294,15 +322,16 @@ export default function ShoesCollection() {
                       </div>
                     )}
                     <div className="absolute inset-0 bg-pitch-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-sm">
-                      <Link 
-                        to={product.id === 'void-ankle-boot' ? '/product/void-ankle-boot' : '#'}
+                      <button
+                        type="button"
+                        onClick={() => addToCart(product)}
                         className="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs"
                       >
                         <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 0" }}>
                           shopping_bag
                         </span>
                         Add to Bag
-                      </Link>
+                      </button>
                     </div>
                   </div>
                   <div className="mt-auto">
