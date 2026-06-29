@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOIR LUXE - The Bags Collection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;600&amp;family=Playfair+Display:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#dfc573",
+                        "secondary-fixed-dim": "#b6d300",
+                        "on-tertiary-fixed": "#231b00",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container": "#1e2022",
+                        "on-surface": "#e3e2e6",
+                        "surface-container-lowest": "#0d0e11",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb2b8",
+                        "on-surface-variant": "#e4bdbf",
+                        "outline-variant": "#5b3f41",
+                        "on-primary-fixed-variant": "#91002c",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#121316",
+                        "on-primary-container": "#ffffff",
+                        "graphite-base": "#0d0d0e",
+                        "on-secondary-fixed": "#181e00",
+                        "on-tertiary-container": "#4e3e00",
+                        "primary-container": "#e32652",
+                        "on-tertiary-fixed-variant": "#564500",
+                        "tertiary-fixed-dim": "#dfc572",
+                        "tertiary-fixed": "#fce18b",
+                        "on-secondary-fixed-variant": "#404c00",
+                        "surface-container-high": "#292a2d",
+                        "silver-mist": "#9ea0a9",
+                        "deep-slate": "#272c33",
+                        "secondary-container": "#d0f100",
+                        "error-container": "#93000a",
+                        "surface-tint": "#ffb2b8",
+                        "surface-container-highest": "#343538",
+                        "outline": "#ab888a",
+                        "surface-bright": "#38393c",
+                        "on-error": "#690005",
+                        "surface-variant": "#343538",
+                        "inverse-surface": "#e3e2e6",
+                        "on-tertiary": "#3c2f00",
+                        "secondary-fixed": "#d0f100",
+                        "pitch-black": "#000000",
+                        "pure-white": "#ffffff",
+                        "on-primary-fixed": "#40000f",
+                        "surface-dim": "#121316",
+                        "tertiary-container": "#c3aa5a",
+                        "surface-container-low": "#1a1b1e",
+                        "on-primary": "#67001d",
+                        "inverse-on-surface": "#2f3033",
+                        "background": "#121316",
+                        "on-background": "#e3e2e6",
+                        "on-secondary-container": "#5c6b00",
+                        "primary-fixed-dim": "#ffb2b8",
+                        "inverse-primary": "#be003d",
+                        "secondary": "#ffffff",
+                        "on-secondary": "#2c3400"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "xl": "64px",
+                        "lg": "48px",
+                        "base": "4px",
+                        "container-margin": "32px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Anton"],
+                        "headline-md": ["Inter"],
+                        "display-xl": ["Anton"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-serif": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "0.90", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-xl": ["80px", { "lineHeight": "0.85", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["20px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "headline-serif": ["64px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.45", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #222326; color: #e3e2e6; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .group:hover .hover-show { opacity: 1; visibility: visible; }
+        .hover-show { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-[#222326] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-pitch-black/80 backdrop-blur-md flat no shadows transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-container-margin max-w-full mx-auto h-full">
+<div class="flex items-center gap-lg">
+<a class="font-display-lg text-display-lg text-pure-white tracking-tighter" href="#">NOIR LUXE</a>
+<div class="hidden md:flex gap-md font-label-caps text-label-caps">
+<a class="text-silver-mist hover:text-pure-white transition-colors duration-300 hover:bg-surface-container-high/50 px-2 py-1" href="#">Apparel</a>
+<a class="text-pure-white border-b-2 border-primary-container pb-2 hover:bg-surface-container-high/50 px-2 py-1" href="#">Bags</a>
+<a class="text-silver-mist hover:text-pure-white transition-colors duration-300 hover:bg-surface-container-high/50 px-2 py-1" href="#">Shoes</a>
+<a class="text-silver-mist hover:text-pure-white transition-colors duration-300 hover:bg-surface-container-high/50 px-2 py-1" href="#">Collections</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center border-b border-pure-white/30 pb-1">
+<span class="material-symbols-outlined text-silver-mist" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-transparent border-none text-pure-white font-body-sm focus:ring-0 placeholder:text-silver-mist/50 ml-2 w-32 focus:w-48 transition-all duration-300" placeholder="Search..." type="text"/>
+</div>
+<button class="text-silver-mist hover:text-pure-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="text-silver-mist hover:text-pure-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+<button class="bg-primary-container text-pure-white font-label-caps text-label-caps px-md py-sm rounded-lg hover:bg-inverse-primary transition-colors ml-sm">Shop Now</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-[120px] pb-xl px-container-margin max-w-[1440px] mx-auto w-full">
+<!-- Header -->
+<header class="mb-xl text-center md:text-left">
+<h1 class="font-display-xl text-display-xl text-pure-white mb-sm">THE BAGS</h1>
+<p class="font-body-lg text-body-lg text-silver-mist max-w-2xl">Discover our curated collection of luxury handbags. Crafted for the modern silhouette, illuminated by the midnight stage.</p>
+</header>
+<div class="flex flex-col md:flex-row gap-lg">
+<!-- Filters Sidebar -->
+<aside class="w-full md:w-64 flex-shrink-0 bg-graphite-base p-md rounded-lg h-fit border border-surface-container-high">
+<div class="flex justify-between items-center mb-md pb-sm border-b border-surface-container-high">
+<h3 class="font-label-caps text-label-caps text-pure-white">FILTERS</h3>
+<button class="text-silver-mist hover:text-pure-white font-body-sm text-body-sm transition-colors">Clear All</button>
+</div>
+<!-- Material Filter -->
+<div class="mb-lg">
+<h4 class="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
+                        Material
+                        <span class="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
+</h4>
+<div class="space-y-sm">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox bg-transparent border-silver-mist text-secondary-fixed-dim focus:ring-secondary-fixed-dim focus:ring-offset-0 focus:ring-offset-transparent rounded-sm w-4 h-4 transition-colors" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-silver-mist group-hover:text-pure-white transition-colors">Calfskin Leather</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox bg-transparent border-silver-mist text-secondary-fixed-dim focus:ring-secondary-fixed-dim focus:ring-offset-0 focus:ring-offset-transparent rounded-sm w-4 h-4 transition-colors" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-silver-mist group-hover:text-pure-white transition-colors">Suede</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox bg-transparent border-silver-mist text-secondary-fixed-dim focus:ring-secondary-fixed-dim focus:ring-offset-0 focus:ring-offset-transparent rounded-sm w-4 h-4 transition-colors" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-silver-mist group-hover:text-pure-white transition-colors">Exotic</span>
+</label>
+</div>
+</div>
+<!-- Color Filter -->
+<div class="mb-lg">
+<h4 class="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
+                        Color
+                        <span class="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
+</h4>
+<div class="flex flex-wrap gap-sm">
+<button aria-label="Black" class="w-8 h-8 rounded-full bg-pitch-black border border-surface-container-high focus:outline-none focus:ring-2 focus:ring-pure-white focus:ring-offset-2 focus:ring-offset-graphite-base"></button>
+<button aria-label="Beige" class="w-8 h-8 rounded-full bg-[#f5f5dc] border border-surface-container-high focus:outline-none focus:ring-2 focus:ring-pure-white focus:ring-offset-2 focus:ring-offset-graphite-base"></button>
+<button aria-label="Burgundy" class="w-8 h-8 rounded-full bg-[#800000] border border-surface-container-high focus:outline-none focus:ring-2 focus:ring-pure-white focus:ring-offset-2 focus:ring-offset-graphite-base"></button>
+<button aria-label="Silver" class="w-8 h-8 rounded-full bg-[#c0c0c0] border border-surface-container-high focus:outline-none focus:ring-2 focus:ring-pure-white focus:ring-offset-2 focus:ring-offset-graphite-base"></button>
+</div>
+</div>
+<!-- Price Filter -->
+<div>
+<h4 class="font-body-md text-body-md text-pure-white mb-sm flex justify-between items-center cursor-pointer group">
+                        Price
+                        <span class="material-symbols-outlined text-silver-mist group-hover:text-pure-white transition-colors">expand_more</span>
+</h4>
+<div class="px-xs pt-sm pb-md">
+<!-- Custom Range Slider Visual -->
+<div class="relative h-1 bg-surface-container-high rounded-full">
+<div class="absolute left-1/4 right-1/4 h-full bg-pure-white rounded-full"></div>
+<div class="absolute left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-pure-white rounded-full border-2 border-graphite-base cursor-grab active:cursor-grabbing"></div>
+<div class="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-pure-white rounded-full border-2 border-graphite-base cursor-grab active:cursor-grabbing"></div>
+</div>
+<div class="flex justify-between mt-sm font-body-sm text-body-sm text-silver-mist">
+<span>$500</span>
+<span>$5,000+</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-md">
+<span class="font-body-sm text-body-sm text-silver-mist">Showing 24 Results</span>
+<div class="flex items-center gap-sm">
+<span class="font-body-sm text-body-sm text-silver-mist">Sort by:</span>
+<select class="bg-transparent border-none text-pure-white font-body-sm focus:ring-0 py-0 cursor-pointer">
+<option class="bg-graphite-base text-pure-white" value="newest">Newest Arrivals</option>
+<option class="bg-graphite-base text-pure-white" value="price_high">Price: High to Low</option>
+<option class="bg-graphite-base text-pure-white" value="price_low">Price: Low to High</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Product Card 1 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A sleek, minimalist black leather top-handle bag placed on a reflective dark obsidian surface. High-key dramatic spotlighting from above emphasizes the smooth texture of the calfskin leather and the subtle silver hardware. The background is completely pitch black, creating a high-contrast, moody, cinematic atmosphere typical of luxury fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeSr5byowDPtiESLaor8QeqmLNF9X-PAYhbXO2Xd2OSN5cBeM1QHE-9z0EhyxABMFPPay60bEbvJU6-1mWxNS1h6iWN5T7OSrxi2rHeSh-tIoz1b-bBJq0ltAcgQ5u04ieGA-hM2SdjgAw2ovWDLR-H1dHWNy9bbpKjvadSKIOzLxmaXtf-B9Hze6B-pF-6S5f5zw0vbDLyj1aYR-Hacj1ReqVXIaLm2Suung2jAqDEjZe1wpvdppIU5NG4o5XhxHvwGwLd3mGCwSR"/>
+<div class="absolute top-sm left-sm bg-pure-white text-pitch-black font-label-caps text-label-caps px-2 py-1 rounded-sm">NEW</div>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">The Obsidian Tote</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Smooth Calfskin, Silver Hardware</p>
+<div class="font-body-lg text-body-lg text-pure-white">$2,450</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A structured, geometric crossbody bag in a deep, rich burgundy suede resting on a textured concrete block. The lighting is cinematic and moody, with a strong directional key light casting deep, dramatic shadows behind the bag, contrasting against the dark, minimalist studio background. The style conveys exclusivity and modern architectural design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0cWb44hw9cENIMVzjcb9CoV6pENt7AMRXDCf3aoIjMeSTToNA7mURawI-Iqy3e1gum-3THoSedIeq375V_4akxlauahEOd-3-nXRHOCRZTgki7KFBeWWdFgGPabQL0DvYafzgVwC8jjj1Xc6qbdm8lWRJIv6SrFqojs3yTIGv8Wguhpv9gvTV-zl0lPM3f0xWXeSX7KwZkxGk0z-HHEsEKUuT38OUNiPGVwlkEH4NKNtovSAQiHVxPO2bTupkPuQatVkymGkZA5R"/>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">Architect Crossbody</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Burgundy Suede, Gold Tone</p>
+<div class="font-body-lg text-body-lg text-pure-white">$1,890</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A small, elegant evening clutch covered in metallic silver mesh, reflecting a subtle, cool-toned studio light. The clutch is positioned on a sheer, dark grey silk fabric draped over a pedestal. The overall scene is dark, moody, and highly focused on the texture and shine of the bag, embodying a premium, late-night luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqPz3TmuFKvIMfABUKIbpVWrAoMDnvAr1vcSu6NxQ3jdIcZKF5erxhGL4m5twgo3ZBMP2jStJTryRmW-YMNDzXflbnGsG3vw1TvwxGzsRH3ypytOA6oEvkh-dNFKGjA8JIBD_l4IRZuCo1UyZ3U9MW1AvtjTIkfsulcX0BSlJfWBqeko6IHkg0KJcUFV9EGGDDuHN377YaeiWuXjuZ4P81g9XAC4PKdbjwCRJbgdVwOX1B7hWqRLDJ4h4mB89RSCVAWtfP4Tjg5-y2"/>
+<div class="absolute top-sm left-sm bg-pure-white text-pitch-black font-label-caps text-label-caps px-2 py-1 rounded-sm">LIMITED</div>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">Starlight Clutch</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Metallic Mesh, Palladium</p>
+<div class="font-body-lg text-body-lg text-pure-white">$1,200</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A large, unstructured hobo bag made of incredibly soft, matte black leather. The bag is casually slumped on a dark, polished stone floor, with a single sharp beam of warm, golden-hour light cutting across the scene, highlighting the folds of the leather against the deep black abyss of the background. Cinematic, high-end luxury lifestyle imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDugZTz1ZUl_53t3-hzVHDcW8GeaYeZXqT7I_llu5cKfYgLoCDxvTc37sG3HsQuSxSiZKlpC78yOaK8VK1gj_M_L-KAGvoVwKXAgdPeEINopCOYy77Dzpix6ar7lvfeP0GJ61q2BnJjO5OCBQurTSBGwzWOnXUfGjE2LM574c8S-OoboasYr2lMmcag8HLOsiejFvsWyuo4sYwT_VQVJ_C28n-sH3MrG5y-LdBpxm2aaI_79wHtK28paY8Ic1ceXkYhdMSIMQZmw2yt"/>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">Midnight Hobo</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Soft Nappa Leather, Matte Black</p>
+<div class="font-body-lg text-body-lg text-pure-white">$2,800</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A highly structured, mini top-handle bag in a stark white exotic leather (like crocodile or alligator). It is presented on a minimalist, matte black geometric plinth. The lighting is extremely sharp and clinical, creating harsh shadows that emphasize the bag's structural lines and exotic texture, standing out dramatically against the pitch-black void surrounding it." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6AcaP8Lk2-En6J4IXp34_xFFycce3TFUE58bmoMzU2LIRqXJf2ILkr6h-vsvBPIkQaEhlaDA4ZY-ycg7x7VQUwWwf42mprNkijZAAmTOx1V1C6BgFUFl482_s7D4_b9g63oVr-8fUPG7TzS7tnF1tkNjms1RpNVkpedc3J43ZsOKUb_8BI8JytRrJP9PyAArlLvBe44GBCfMLYNctPLpRBREdxb3EMjl8QayxtBjins54e6XoyGdVGgcxbRXdfv260X3GJlCbCMoC"/>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">Ivory Structure Mini</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Embossed Croc, Silver Tone</p>
+<div class="font-body-lg text-body-lg text-pure-white">$3,200</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="bg-deep-slate rounded-lg p-sm group relative flex flex-col h-full border border-transparent hover:border-surface-container-high transition-colors">
+<div class="relative aspect-[4/5] mb-md overflow-hidden rounded-md bg-pitch-black flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A sleek, cylindrical bucket bag in dark charcoal grey leather. It is suspended in mid-air against a completely black background. A soft, diffuse spotlight illuminates the bag from the front, revealing its minimal seams and matte finish. The image feels weightless, modern, and deeply atmospheric, aligning with a premium, austere aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZmkq6uED5LYbuPOqT92H3LN-CQrhoPR-IfbUlCTyW7Kycnm0XYIU2oI5oZCqU1KvDKuLWqexhlexzKGOKsHI7msZwi4y05mMsPNfjE5WgOHLaeh2FDflpxu_0-n5sBQTwXYwQiUZ3KZuz06-aKhTq_XlDwRxb-RsGTMVkJNoq5QKUsiTStKV4Q-bVTfcIbyT4LN4GdvnDTyuZ_H3DYMwB1-5nWNCIgOH7WmW50bWcRwluggxd93HctdFkeL50yLRF6FBQufXWwpoh"/>
+<div class="absolute inset-0 bg-pitch-black/40 hover-show flex items-end justify-center pb-sm">
+<button class="w-[90%] bg-primary-container text-pure-white font-label-caps text-label-caps py-sm rounded-lg hover:bg-inverse-primary transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline-md text-headline-md text-pure-white mb-xs truncate">Echo Cylinder</h3>
+<p class="font-body-sm text-body-sm text-silver-mist mb-sm truncate">Charcoal Leather, Hidden Clasp</p>
+<div class="font-body-lg text-body-lg text-pure-white">$1,650</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-xl flex justify-center">
+<button class="bg-[#222326] border border-pure-white text-pure-white font-label-caps text-label-caps px-lg py-sm rounded-lg hover:bg-surface-container-high transition-colors">Load More</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-pitch-black full-width py-xl mt-xl border-t border-deep-slate flat no shadows cursor-pointer">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg px-container-margin max-w-[1440px] mx-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-center">
+<span class="font-display-xl text-display-xl text-pure-white mb-md">NOIR LUXE</span>
+<p class="font-body-sm text-body-sm text-silver-mist">© 2024 NOIR LUXE. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-lg md:gap-xl justify-start md:justify-end items-center">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors" href="#">Brand Story</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors" href="#">Sustainability</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors" href="#">Legal</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors" href="#">Store Locator</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

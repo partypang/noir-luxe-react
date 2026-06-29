@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - NOIR LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;600&amp;family=Playfair+Display&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffffff",
+                        "outline": "#ab888a",
+                        "tertiary-container": "#c3aa5a",
+                        "secondary-container": "#d0f100",
+                        "on-background": "#e3e2e6",
+                        "pure-white": "#ffffff",
+                        "pitch-black": "#000000",
+                        "secondary-fixed": "#d0f100",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#4e3e00",
+                        "primary-fixed-dim": "#ffb2b8",
+                        "surface": "#121316",
+                        "inverse-on-surface": "#2f3033",
+                        "surface-container": "#1e2022",
+                        "on-primary-fixed-variant": "#91002c",
+                        "surface-container-lowest": "#0d0e11",
+                        "primary-container": "#e32652",
+                        "background": "#121316",
+                        "deep-slate": "#272c33",
+                        "secondary-fixed-dim": "#b6d300",
+                        "on-secondary-container": "#5c6b00",
+                        "surface-container-low": "#1a1b1e",
+                        "silver-mist": "#9ea0a9",
+                        "on-primary-fixed": "#40000f",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary": "#67001d",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-error": "#690005",
+                        "surface-dim": "#121316",
+                        "graphite-base": "#0d0d0e",
+                        "inverse-primary": "#be003d",
+                        "surface-variant": "#343538",
+                        "tertiary": "#dfc573",
+                        "outline-variant": "#5b3f41",
+                        "on-secondary": "#2c3400",
+                        "surface-container-high": "#292a2d",
+                        "primary": "#ffb2b8",
+                        "surface-tint": "#ffb2b8",
+                        "tertiary-fixed-dim": "#dfc572",
+                        "on-secondary-fixed": "#181e00",
+                        "surface-container-highest": "#343538",
+                        "on-primary-container": "#ffffff",
+                        "on-tertiary-fixed-variant": "#564500",
+                        "surface-bright": "#38393c",
+                        "on-surface": "#e3e2e6",
+                        "on-tertiary-fixed": "#231b00",
+                        "inverse-surface": "#e3e2e6",
+                        "primary-fixed": "#ffdadb",
+                        "tertiary-fixed": "#fce18b",
+                        "on-secondary-fixed-variant": "#404c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "container-margin": "32px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Anton"],
+                        "body-md": ["Inter"],
+                        "headline-serif": ["Playfair Display"],
+                        "display-lg": ["Anton"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["80px", { "lineHeight": "0.85", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "headline-serif": ["64px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "0.90", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-lg": ["20px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #222326; /* Charcoal Canvas */
+            color: #ffffff;
+        }
+        
+        .input-field {
+            @apply w-full bg-transparent border-0 border-b border-pure-white rounded-none py-3 px-0 text-pure-white font-body-md text-body-md focus:ring-0 focus:border-b-2 focus:border-pure-white transition-all duration-300;
+        }
+
+        .input-field::placeholder {
+            @apply text-silver-mist;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNav - Suppressed for transactional checkout page to focus on completion -->
+<header class="w-full py-md px-container-margin flex justify-center items-center bg-pitch-black border-b border-deep-slate z-50">
+<a class="font-display-lg text-display-lg text-pure-white tracking-tighter" href="#">NOIR LUXE</a>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-container-margin py-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg lg:gap-xl">
+<!-- Left Side: Checkout Form -->
+<div class="lg:col-span-7 space-y-xl">
+<!-- Section 1: Contact -->
+<section class="space-y-md">
+<div class="flex justify-between items-end border-b border-deep-slate pb-xs">
+<h2 class="font-headline-md text-headline-md text-pure-white">Contact Information</h2>
+<span class="font-body-sm text-body-sm text-silver-mist">Already have an account? <a class="text-pure-white underline hover:text-primary-container transition-colors" href="#">Log in</a></span>
+</div>
+<div class="space-y-sm">
+<input class="input-field" placeholder="Email Address" required="" type="email"/>
+</div>
+</section>
+<!-- Section 2: Shipping -->
+<section class="space-y-md">
+<h2 class="font-headline-md text-headline-md text-pure-white border-b border-deep-slate pb-xs">Shipping Address</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<input class="input-field" placeholder="First Name" required="" type="text"/>
+<input class="input-field" placeholder="Last Name" required="" type="text"/>
+</div>
+<input class="input-field" placeholder="Street Address" required="" type="text"/>
+<input class="input-field" placeholder="Apartment, suite, etc. (optional)" type="text"/>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<input class="input-field md:col-span-1" placeholder="City" required="" type="text"/>
+<select class="input-field md:col-span-1 bg-transparent text-pure-white appearance-none cursor-pointer" required="">
+<option class="text-pitch-black" disabled="" selected="" value="">State</option>
+<option class="text-pitch-black" value="NY">New York</option>
+<option class="text-pitch-black" value="CA">California</option>
+<option class="text-pitch-black" value="TX">Texas</option>
+</select>
+<input class="input-field md:col-span-1" placeholder="ZIP Code" required="" type="text"/>
+</div>
+</section>
+<!-- Section 3: Payment -->
+<section class="space-y-md">
+<h2 class="font-headline-md text-headline-md text-pure-white border-b border-deep-slate pb-xs">Payment Method</h2>
+<div class="bg-surface-container-low border border-deep-slate rounded-lg p-md space-y-md">
+<!-- PayPal Option Selected -->
+<div class="flex items-center justify-between cursor-pointer border border-primary-container rounded-lg p-sm bg-surface-container-highest">
+<div class="flex items-center space-x-sm">
+<div class="w-4 h-4 rounded-full border-2 border-primary-container flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+</div>
+<span class="font-body-md text-body-md text-pure-white font-semibold">PayPal</span>
+</div>
+<img alt="PayPal Logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwylfNSOaEipf5tFN3ZNY7S_PCRunD2Fn3pF1Mp7iBFs9zTQEmUbNBNbw5JVQT3-WLrg1LYVmNPUIq5IZT88NeeH8MbagZRDNb1lgG0FfKCZS3pb1tDQdiKeDI-ifygIzf253Fz7KJY7B8lA1LaHile3vFe4V2ztYknPQZXSxg0rWguWeCYaVR_7fCYgAhlXn7f4xLlELelHXI0HkEBqPq_bft0eyaM85mQf9dz_QR_0h4_fgx5NP4HHSsoeoFN21aItuBfPCoxKP"/>
+</div>
+<!-- Credit Card Option Unselected -->
+<div class="flex items-center justify-between cursor-pointer border border-deep-slate rounded-lg p-sm hover:border-silver-mist transition-colors">
+<div class="flex items-center space-x-sm">
+<div class="w-4 h-4 rounded-full border-2 border-silver-mist"></div>
+<span class="font-body-md text-body-md text-silver-mist">Credit Card</span>
+</div>
+<div class="flex space-x-2">
+<span class="material-symbols-outlined text-silver-mist">credit_card</span>
+</div>
+</div>
+<!-- PayPal Action Info -->
+<div class="pt-sm text-center">
+<span class="material-symbols-outlined text-silver-mist text-4xl mb-xs">verified_user</span>
+<p class="font-body-sm text-body-sm text-silver-mist">After clicking "Complete Purchase", you will be redirected to PayPal to complete your purchase securely.</p>
+</div>
+</div>
+</section>
+<button class="w-full bg-primary-container text-pure-white font-label-caps text-label-caps py-md rounded-lg hover:bg-inverse-primary transition-colors duration-300 flex justify-center items-center space-x-xs mt-lg">
+<span>COMPLETE PURCHASE</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Right Side: Order Summary -->
+<div class="lg:col-span-5">
+<div class="bg-deep-slate rounded-xl p-md lg:p-lg sticky top-xs shadow-2xl">
+<h2 class="font-headline-lg text-headline-lg text-pure-white mb-md">Order Summary</h2>
+<!-- Item -->
+<div class="flex items-center space-x-md pb-md border-b border-surface-variant">
+<div class="w-24 h-32 bg-pitch-black rounded-lg overflow-hidden flex-shrink-0 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0 mix-blend-luminosity opacity-80" data-alt="A cinematic, high-contrast studio shot of a luxurious black leather tote bag resting on a dark slate pedestal. The lighting highlights the premium texture of the leather and subtle silver hardware. Deep shadows create a moody, exclusive atmosphere fitting a premium fashion brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIFnHXUPp_vid2voCmu3jxoka8IVzgyX12rc9RX4Bbt6S8xZ1h4gMue7YdfSl1_m2nFKg4ABtBNJIpYNFAiCxHxr-Tmbth4gOSWuYMnPyDWHUqP5TzwdbEkpTbMe6ufR6b5Y5NGDBBtIpZy3qKQyktPntRvmRIi-5lhfYEjaRrsU1jxErQiW7NFu0C0WkMrZ47R7SJZFCTsRNu7N_2BiHgJusIvXzUYnUIbqlhRy23ziL6efgm2WqX0sG0b0HBygprScbhzsmo3LRV')"></div>
+</div>
+<div class="flex-grow flex flex-col justify-between h-full">
+<div>
+<h3 class="font-body-lg text-body-lg text-pure-white mb-base">The Obsidian Tote</h3>
+<p class="font-body-sm text-body-sm text-silver-mist">Color: Pitch Black</p>
+<p class="font-body-sm text-body-sm text-silver-mist">Qty: 1</p>
+</div>
+<p class="font-body-md text-body-md text-pure-white font-semibold mt-auto">$2,450.00</p>
+</div>
+</div>
+<!-- Calculations -->
+<div class="space-y-sm py-md border-b border-surface-variant font-body-sm text-body-sm text-silver-mist">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span class="text-pure-white">$2,450.00</span>
+</div>
+<div class="flex justify-between">
+<span>Shipping</span>
+<span class="text-pure-white">Complimentary Express</span>
+</div>
+<div class="flex justify-between">
+<span>Estimated Tax</span>
+<span class="text-pure-white">$214.38</span>
+</div>
+</div>
+<!-- Total -->
+<div class="flex justify-between items-end pt-md">
+<span class="font-body-lg text-body-lg text-pure-white">Total</span>
+<div class="text-right">
+<span class="font-body-sm text-body-sm text-silver-mist block mb-1">USD</span>
+<span class="font-headline-lg text-headline-lg text-pure-white">$2,664.38</span>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-surface-variant flex items-start space-x-sm">
+<span class="material-symbols-outlined text-silver-mist">lock</span>
+<p class="font-body-sm text-body-sm text-silver-mist leading-relaxed">Your payment information is encrypted and secure. NOIR LUXE does not store your full payment details.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-pitch-black full-width py-xl mt-xl border-t border-deep-slate">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg px-container-margin max-w-[1440px] mx-auto">
+<div class="md:col-span-4 mb-md">
+<span class="font-display-xl text-display-xl text-pure-white">NOIR LUXE</span>
+</div>
+<div class="flex flex-col space-y-sm">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Brand Story</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col space-y-sm">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Legal</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Store Locator</a>
+</div>
+<div class="flex flex-col space-y-sm">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Contact</a>
+</div>
+<div class="md:col-span-4 mt-lg pt-md border-t border-surface-variant">
+<p class="font-body-sm text-body-sm text-silver-mist">© 2024 NOIR LUXE. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+</body></html>

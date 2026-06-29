@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Obsidian Tote - NOIR LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d0f100",
+                        "surface-container": "#1e2022",
+                        "on-primary": "#67001d",
+                        "inverse-surface": "#e3e2e6",
+                        "on-secondary-fixed": "#181e00",
+                        "on-secondary-container": "#5c6b00",
+                        "primary-container": "#e32652",
+                        "outline-variant": "#5b3f41",
+                        "secondary-fixed-dim": "#b6d300",
+                        "surface-container-low": "#1a1b1e",
+                        "tertiary-fixed-dim": "#dfc572",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0d0e11",
+                        "on-primary-container": "#ffffff",
+                        "on-background": "#e3e2e6",
+                        "error-container": "#93000a",
+                        "pure-white": "#ffffff",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-high": "#292a2d",
+                        "surface-dim": "#121316",
+                        "primary-fixed-dim": "#ffb2b8",
+                        "tertiary-fixed": "#fce18b",
+                        "silver-mist": "#9ea0a9",
+                        "on-secondary-fixed-variant": "#404c00",
+                        "tertiary": "#dfc573",
+                        "on-tertiary-container": "#4e3e00",
+                        "on-tertiary-fixed-variant": "#564500",
+                        "secondary-container": "#d0f100",
+                        "on-primary-fixed": "#40000f",
+                        "pitch-black": "#000000",
+                        "deep-slate": "#272c33",
+                        "surface-variant": "#343538",
+                        "on-tertiary": "#3c2f00",
+                        "on-secondary": "#2c3400",
+                        "on-primary-fixed-variant": "#91002c",
+                        "on-surface-variant": "#e4bdbf",
+                        "background": "#121316",
+                        "surface-bright": "#38393c",
+                        "inverse-on-surface": "#2f3033",
+                        "surface": "#121316",
+                        "secondary": "#ffffff",
+                        "tertiary-container": "#c3aa5a",
+                        "surface-tint": "#ffb2b8",
+                        "on-tertiary-fixed": "#231b00",
+                        "primary": "#ffb2b8",
+                        "surface-container-highest": "#343538",
+                        "on-surface": "#e3e2e6",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#be003d",
+                        "graphite-base": "#0d0d0e",
+                        "error": "#ffb4ab",
+                        "outline": "#ab888a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "lg": "48px",
+                        "gutter": "16px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "container-margin": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-xl": ["Anton"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-serif": ["Playfair Display"],
+                        "display-lg": ["Anton"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-xl": ["80px", { "lineHeight": "0.85", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "headline-serif": ["64px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "0.90", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.45", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .inset-shadow-active:active {
+            box-shadow: inset 0 0 0 2px #949aa4;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 h-20 bg-pitch-black/80 backdrop-blur-md transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-container-margin max-w-[1440px] mx-auto h-full">
+<a class="font-display-lg text-display-lg text-pure-white tracking-tighter hover:text-pure-white transition-colors duration-300" href="#">NOIR LUXE</a>
+<nav class="hidden md:flex gap-lg h-full items-center">
+<a class="font-label-caps text-label-caps text-silver-mist hover:text-pure-white hover:bg-surface-container-high/50 transition-colors duration-300 px-md py-xs rounded-full" href="#">Apparel</a>
+<a class="font-label-caps text-label-caps text-pure-white border-b-2 border-primary-container pb-2 px-md py-xs" href="#">Bags</a>
+<a class="font-label-caps text-label-caps text-silver-mist hover:text-pure-white hover:bg-surface-container-high/50 transition-colors duration-300 px-md py-xs rounded-full" href="#">Shoes</a>
+<a class="font-label-caps text-label-caps text-silver-mist hover:text-pure-white hover:bg-surface-container-high/50 transition-colors duration-300 px-md py-xs rounded-full" href="#">Collections</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex relative items-center">
+<input class="bg-transparent border-b border-pure-white text-pure-white placeholder-silver-mist font-body-sm text-body-sm py-xs px-xs focus:outline-none focus:border-primary-container transition-colors rounded-none w-48" placeholder="Search..." type="text"/>
+<span class="material-symbols-outlined absolute right-xs text-pure-white cursor-pointer" data-icon="search">search</span>
+</div>
+<button class="text-silver-mist hover:text-pure-white transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="text-silver-mist hover:text-pure-white transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-md py-xs rounded-lg hover:bg-inverse-primary transition-colors inset-shadow-active">Shop Now</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-20">
+<!-- Hero Section (Split Layout) -->
+<section class="max-w-[1440px] mx-auto px-container-margin py-xl flex flex-col lg:flex-row gap-xl min-h-[calc(100vh-80px)]">
+<!-- Left: High-impact Imagery -->
+<div class="lg:w-7/12 w-full h-[614px] lg:h-auto relative bg-surface-container rounded-xl overflow-hidden shadow-2xl">
+<img alt="The Obsidian Tote" class="w-full h-full object-cover rounded-xl" data-alt="A highly detailed, professional product photography shot of a sleek, structural black calfskin leather tote bag (The Obsidian Tote) with gleaming silver hardware. The bag is placed against an infinitely deep pitch-black background. Cinematic, dramatic studio lighting casts harsh, elegant shadows, highlighting the smooth texture of the premium leather and the sharp reflections on the metallic clasps. The overall aesthetic is minimalist, luxurious, and moody, fitting a high-end fashion brand's 'Midnight Stage Presence' style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7lLS2j1ABeGwsw1kifEty7TpEfOb54X4f91TBf9rCv7FNG_N_1FFeeHCvqwep3IEhYl3TgrS8Qlxu7csHZIB2u_B54BY1h5rCzLRadfEcYxC9fykwWzahJwold-6E2EzI09q_XA2hwPuaEN_wZxRLIS5sL5J1BB4HOAgRCeB2YHruFzWSpSZBM87bhaLsXK95_a8O2WqEGdp9mUiQ6XKXjhuCcMYJzEzGJchwuXT40h1DpYFBeHEiYnRjxSjachdZHKrDKzvrUYOB"/>
+</div>
+<!-- Right: Sticky Product Info -->
+<div class="lg:w-5/12 w-full relative">
+<div class="sticky top-32 flex flex-col gap-lg">
+<div>
+<h1 class="font-display-lg text-display-lg text-pure-white uppercase tracking-tight mb-sm">THE OBSIDIAN TOTE</h1>
+<p class="font-headline-lg text-headline-lg text-silver-mist">$2,450</p>
+</div>
+<div class="space-y-sm">
+<p class="font-body-lg text-body-lg text-inverse-surface leading-relaxed">
+                            A study in structural dominance and midnight aesthetics. The Obsidian Tote is masterfully crafted from single-piece, flawless calfskin leather, designed to hold its architectural shape while aging with graceful subtlety. 
+                        </p>
+<p class="font-body-md text-body-md text-silver-mist">
+                            Featuring uncompromising silver hardware and a minimalist silhouette that commands attention in any environment.
+                        </p>
+</div>
+<div class="pt-sm border-t border-surface-variant flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-md rounded-xl hover:bg-inverse-primary transition-colors inset-shadow-active uppercase tracking-wide flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                            ADD TO BAG
+                        </button>
+<button class="w-full bg-transparent border border-surface-variant text-pure-white font-label-caps text-label-caps py-sm rounded-xl hover:border-pure-white hover:bg-surface-container-low transition-colors inset-shadow-active">
+                            ADD TO WISHLIST
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Detail Showcase -->
+<section class="max-w-[1440px] mx-auto px-container-margin py-xl space-y-xl">
+<div class="text-center max-w-2xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-pure-white mb-sm">UNCOMPROMISING MATERIALS</h2>
+<p class="font-body-md text-body-md text-silver-mist">Every texture tells a story of obsessive refinement.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-deep-slate rounded-xl p-sm group overflow-hidden">
+<div class="aspect-square bg-pitch-black rounded-lg overflow-hidden relative">
+<img alt="Leather Detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An extreme macro close-up of supple, flawless black calfskin leather. The lighting is raking from the side, emphasizing the microscopic grain and luxurious matte finish of the material. Deep, rich shadows contrast with subtle, soft highlights, creating a tactile, sensual visual experience consistent with a premium luxury brand's dark, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUX2NMw5ppi3gsguAE3freezxSBr5JVFiCXy2ssN4KVY71LLS15aJOTlZcx2wntvIQrjbRQsD54eiOGzpxewQ2motGkRm8Jc3PXAKT2IrCurzVfg8ocJ-FtFCsUqFPoe0MchNiOeDaxSviZxVNWnZ0L3YtPo9P6f41oB62FabnRqPA7ZT_rLi4Gl4LeiA2Vd2CWv8T0-T4Zr_E1w43pJ8VGscbn5qa5LBFe5W6DXiAcztWcysFSRh4l_pUWXv3SoRUbPYtGt_KJp1I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-pitch-black/80 to-transparent flex items-end p-md">
+<h3 class="font-headline-md text-headline-md text-pure-white">Calfskin Grain</h3>
+</div>
+</div>
+</div>
+<div class="bg-deep-slate rounded-xl p-sm group overflow-hidden">
+<div class="aspect-square bg-pitch-black rounded-lg overflow-hidden relative">
+<img alt="Hardware Detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A striking close-up photograph of a heavy, polished silver buckle on a black leather strap. The silver hardware is flawlessly reflective, catching a sharp, cool white studio light against a deep black void background. The image conveys industrial precision and high-end craftsmanship, embodying a 'Midnight Stage Presence' style with stark contrast and crisp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpKmfxctk87mv_0r6zBI0hLxeCasBoiEmzMf5L9s_0ksr8gc_5VszlSluP5m_x7oBtgDpftqkT9t9dt3q_bQUDJAtpcO-2IRGN0RCJ80zvp3TzuTcIKtSl4SsNNsAfkTUizWhdSnmKZaCYd_YokJIMKFQ5SRBApK6wsjLZ47uE8hj7-iFpcr6nzKXOdFG6cDjz1EM_SMkvLxHdEFsZJNUQ6U7aNivG01FPXpToREgICvBGmWYV1Bo1r5WinUyqHanJ2-LpjgH18tnH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-pitch-black/80 to-transparent flex items-end p-md">
+<h3 class="font-headline-md text-headline-md text-pure-white">Surgical Steel Hardware</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Specs -->
+<section class="bg-surface-container-low py-xl">
+<div class="max-w-[1440px] mx-auto px-container-margin">
+<div class="max-w-4xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-pure-white mb-lg text-center uppercase tracking-widest">STRUCTURAL INTEGRITY</h2>
+<div class="divide-y divide-surface-variant border-y border-surface-variant">
+<div class="py-md flex flex-col sm:flex-row justify-between">
+<span class="font-label-caps text-label-caps text-silver-mist w-1/3">Dimensions</span>
+<span class="font-body-md text-body-md text-pure-white w-2/3">H: 32cm × W: 40cm × D: 18cm. Handle drop: 15cm.</span>
+</div>
+<div class="py-md flex flex-col sm:flex-row justify-between">
+<span class="font-label-caps text-label-caps text-silver-mist w-1/3">Material Composition</span>
+<span class="font-body-md text-body-md text-pure-white w-2/3">100% Full-Grain Calfskin Leather exterior. Suede lining. Palladium-finish hardware.</span>
+</div>
+<div class="py-md flex flex-col sm:flex-row justify-between">
+<span class="font-label-caps text-label-caps text-silver-mist w-1/3">Care Instructions</span>
+<span class="font-body-md text-body-md text-pure-white w-2/3">Store in provided dust bag. Avoid direct exposure to prolonged sunlight and moisture. Clean with a soft, dry cloth.</span>
+</div>
+<div class="py-md flex flex-col sm:flex-row justify-between">
+<span class="font-label-caps text-label-caps text-silver-mist w-1/3">Origin</span>
+<span class="font-body-md text-body-md text-pure-white w-2/3">Handcrafted in Florence, Italy.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Complete the Look Carousel -->
+<section class="max-w-[1440px] mx-auto px-container-margin py-xl overflow-hidden">
+<div class="flex justify-between items-end mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-pure-white uppercase">Complete The Look</h2>
+<div class="flex gap-sm">
+<button class="p-xs bg-surface-container rounded-full hover:bg-surface-bright transition-colors text-pure-white"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-xs bg-surface-container rounded-full hover:bg-surface-bright transition-colors text-pure-white"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-md pb-md snap-x hide-scrollbar">
+<!-- Product Card 1 -->
+<div class="snap-start min-w-[300px] bg-deep-slate rounded-xl p-sm shrink-0 group cursor-pointer inset-shadow-active">
+<div class="aspect-[3/4] bg-pitch-black rounded-lg mb-sm overflow-hidden relative">
+<img alt="Void Ankle Boot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, sharp-pointed black leather ankle boot (Void Ankle Boot) isolated on a dark, moody studio background. The lighting is cinematic, casting long shadows and highlighting the polished leather and aggressive silhouette of the footwear. Minimalist, premium, and sophisticated dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMMh1RQw6EAXIfkiaKFHA9KRaJNpLaW6Z7IzutAIhv4f2M0OihfrxrPs6ka_-rypW7rJOvhmi1PW9XZCdYEQ0A6MZM-zPQKydQ3ut-l0Q_jufg7qD_UNq4wmIJvP1l8fk3s4pv5UsqiJmO7rBWITRXBq761E9bMRqCeVO8U9FMJjnNqkgDa8LvfnO6Uq4zSApsr9H2ly02eG1Gf44MZnx_n55PJ28oJTVM190H6I_Obx2mZfvHX-tywpK87RvCEBCx_GpsXLOBXdKL"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg text-body-lg text-pure-white">Void Ankle Boot</h4>
+<p class="font-label-caps text-label-caps text-silver-mist mt-xs">Footwear</p>
+</div>
+<span class="font-body-md text-body-md text-pure-white">$1,150</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="snap-start min-w-[300px] bg-deep-slate rounded-xl p-sm shrink-0 group cursor-pointer inset-shadow-active">
+<div class="aspect-[3/4] bg-pitch-black rounded-lg mb-sm overflow-hidden relative">
+<img alt="Monolith Coat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A structured, minimalist longline tailored coat in deep charcoal grey. The garment is styled on an invisible mannequin against a pitch-black background. Cinematic side lighting emphasizes the sharp lapels and luxurious wool texture, aligning with a high-end, dark, moody fashion aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT1jRGdWdkM9Oq6VwwxTKTvYoRHmW-CpdaFJPfRcuD1fxV5586TvI_q22Uy1-uyxhw80p7WhdRn-CLdmHK2Iy6HYVTDz_I9SQ2nvBi-G-_TVnkfBmu0o8amZ2b6-JzTfoCefLFB2R3LCyTvMRVqvZHI1LlByngymVd78gwdFd6MF3mvpoigjjrdcRvgkf3M9DZyYV-WaEIwhWbgotz0572hvq-oV4Q2dCnCQayzCMxykFeR9Jbz8uR55iSKIbYYvabjwwUtuQoQE2k"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg text-body-lg text-pure-white">Monolith Coat</h4>
+<p class="font-label-caps text-label-caps text-silver-mist mt-xs">Outerwear</p>
+</div>
+<span class="font-body-md text-body-md text-pure-white">$3,200</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="snap-start min-w-[300px] bg-deep-slate rounded-xl p-sm shrink-0 group cursor-pointer inset-shadow-active">
+<div class="aspect-[3/4] bg-pitch-black rounded-lg mb-sm overflow-hidden relative">
+<img alt="Eclipse Shades" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A pair of slim, dark architectural sunglasses with tinted black lenses and matte black frames. They rest on a dark, reflective surface in a dimly lit studio environment. Subtle rim lighting defines their sharp edges, creating an aura of mystery and exclusive luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAooXTxQhJ_Qtm2yGHAXFArKC6TaHqwMw_QMpZZD4Xz1jVTMGp9ouUYxJJtZfjJia0QJtLGdcZ8zfPETmG6SsawYOQa593fM60Xi1AEt0Sn5gbJ_WdH_8HpXrOr0HAPO0I5gK04L1IgBdvZc_ecDYjG2VEvl5UBGUv9eo4u3uS2iS3Q8c84ROg0hrwibVditkd5Wbi61qFCC8WPczPv-YhR-dDV_fWklU-wEJHL9YQNOokGapaC-Q6Y2Ck0PKZS-mKpDlTjSlj72DIN"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg text-body-lg text-pure-white">Eclipse Shades</h4>
+<p class="font-label-caps text-label-caps text-silver-mist mt-xs">Accessories</p>
+</div>
+<span class="font-body-md text-body-md text-pure-white">$450</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-pitch-black full-width py-xl mt-xl border-t border-deep-slate">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg px-container-margin max-w-[1440px] mx-auto">
+<div class="col-span-1 md:col-span-2">
+<h2 class="font-display-xl text-display-xl text-pure-white mb-md">NOIR LUXE</h2>
+<p class="font-body-sm text-body-sm text-silver-mist max-w-sm">
+                    Defining the intersection of uncompromising minimalism and cinematic luxury. 
+                </p>
+</div>
+<div class="col-span-1 flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Brand Story</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Sustainability</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Legal</a>
+</div>
+<div class="col-span-1 flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Store Locator</a>
+<a class="font-body-sm text-body-sm text-silver-mist hover:text-primary transition-colors cursor-pointer" href="#">Contact</a>
+</div>
+</div>
+<div class="mt-xl pt-lg border-t border-deep-slate/50 px-container-margin max-w-[1440px] mx-auto">
+<p class="font-label-caps text-label-caps text-silver-mist text-center">© 2024 NOIR LUXE. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<style>
+        /* Hide scrollbar for carousel but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>
